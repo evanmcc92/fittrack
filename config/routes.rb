@@ -1,4 +1,8 @@
 Fittrack::Application.routes.draw do
+  get "exercise/create"
+  get "exercise/destroy"
+  get "exercise/update"
+  get "exercise/index"
   root "static_page#index"
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
