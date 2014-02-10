@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  references: 
+  references: 
+  rep: MyString
+  weight: MyString
+  time: MyString
+  distance: MyString
+
+two:
+  references: 
+  references: 
+  rep: MyString
+  weight: MyString
+  time: MyString
+  distance: MyString
