@@ -3,7 +3,7 @@ class ExercisesController < ApplicationController
   	@exercise = current_user.exercises.create(exercise_params)
 
   	if @exercise.save
-  		redirect_to "index"
+  		redirect_to exercises_path
   	else
   		render root_path
   	end
