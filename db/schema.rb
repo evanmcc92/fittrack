@@ -17,9 +17,12 @@ ActiveRecord::Schema.define(version: 20140210160955) do
     t.string   "name"
     t.string   "description"
     t.string   "image"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "exercises", ["user_id"], name: "index_exercises_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
@@ -38,6 +41,7 @@ ActiveRecord::Schema.define(version: 20140210160955) do
     t.string   "weight"
     t.string   "height"
     t.string   "bio"
+    t.string   "gender"
     t.boolean  "admin",                  default: false
   end
 
