@@ -22,3 +22,14 @@
   url('https://netdna.bootstrapcdn.com/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.ttf') format('truetype'),
   url('https://netdna.bootstrapcdn.com/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
 }
+#body {
+	padding: 10px;
+}
+#index-col-md-8 {
+	padding-right: -10px;
+}
+#user-info {
+	border: 5px solid #dddddd;
+	padding: 5px;
+  border-radius: 4px;
+}
