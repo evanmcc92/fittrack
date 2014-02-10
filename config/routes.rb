@@ -1,5 +1,7 @@
 Fittrack::Application.routes.draw do
+
   resources :exercises
+  resources :workouts
   root "static_page#index"
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
