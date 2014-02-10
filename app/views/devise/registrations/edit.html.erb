@@ -12,7 +12,7 @@
   <% end -%>
 
   <p><%= f.label :gender %><br />
-  <%= f.label "Male" %>: <%= f.radio_button :gender, "Male" %>&nbsp;&nbsp;<%= f.label "Female" %>: <%= f.radio_button :gender, "Female" %></p>
+  <%= f.label "Male" %>: <%= f.radio_button(:gender, "Male") %>&nbsp;&nbsp;<%= f.label "Female" %>: <%= f.radio_button(:gender, "Female") %></p>
 
   <p><%= f.label :height %><br />
   <%= f.text_field :height %></p>

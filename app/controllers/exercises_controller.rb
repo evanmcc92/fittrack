@@ -29,14 +29,14 @@ class ExercisesController < ApplicationController
   def update
     @exercise = Exercise.find(params[:id])
 
-    if @exercise.update_attributes(update_task_params)
+    if @exercise.update_attributes(exercise_params)
       #if task saves
       flash[:success] = "exercise Updated"
-      redirect_to root_path
+      redirect_to :back
     else
       #if task doesnt save
       flash[:error] = "exercise not Updated"
-      redirect_to :back
+      redirect_to root_path
     end
   end
 
