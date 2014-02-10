@@ -2,7 +2,7 @@
 	<p>Name: <%= current_user.name%></p>
 	<p>Email: <%= current_user.email%></p>
 	<p>Height: <%= current_user.height%></p>
-	<p>Weight: <%= current_user.weight%> lbs</p>
+	<p>Weight: <%= current_user.weight%><% if current_user.weight %> lbs<% end %></p>
 	<p>Bio: <%= current_user.bio%></p>
 	<% if current_user.admin %>
 	<p>Admin: True</p>
