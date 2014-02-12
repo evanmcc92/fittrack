@@ -9,7 +9,7 @@ class ExercisesController < ApplicationController
   	end
   end
 
-   def destroy
+  def destroy
     @exercise = Exercise.find(params[:id])
 
     @exercise.destroy

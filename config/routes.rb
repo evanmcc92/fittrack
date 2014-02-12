@@ -1,7 +1,14 @@
 Fittrack::Application.routes.draw do
 
+  get "workout_sets/index"
+  get "workout_sets/new"
+  get "workout_sets/show"
+  get "workout_sets/edit"
+  get "workout_sets/update"
+  get "workout_sets/create"
   resources :exercises
   resources :workouts
+  resources :workoutsets
   root "static_page#index"
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
