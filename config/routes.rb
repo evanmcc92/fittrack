@@ -1,10 +1,11 @@
 Fittrack::Application.routes.draw do
 
+  get "users/show"
+  get "users/index"
   resources :exercises
-  resources :workouts
-  resources :workout_sets
   root "static_page#index"
   devise_for :users
+  resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
