@@ -5,5 +5,6 @@ class AddColumnsToUser < ActiveRecord::Migration
     add_column :users, :height, :string
     add_column :users, :bio, :string
     add_column :users, :gender, :string
+    add_column :users, :age, :datetime
   end
 end

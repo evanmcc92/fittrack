@@ -4,6 +4,7 @@ class CreateExercises < ActiveRecord::Migration
       t.string :name
       t.string :description
       t.string :image
+      t.string :category
       t.references :user, index: true
 
       t.timestamps

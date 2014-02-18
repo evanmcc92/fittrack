@@ -1,4 +1,3 @@
-<h1>Exercise#create</h1>
 <% if current_user.admin %>
 <%= form_for @exercise do |f| %>
 
@@ -10,9 +9,10 @@
 
 	<p><%= f.label :category %><br>
 	<%= f.select(:category, [["Lifting"], ["Cardio"]])  %></p>
-
+	<%= f.submit "Publish Exercise", class: "btn btn-primary" %>
+<% end %>
 <% else %>
 <p>You are not an admin</p>
 
-<% end %>
+
 <% end %>

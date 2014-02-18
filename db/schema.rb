@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140212144745) do
+ActiveRecord::Schema.define(version: 20140218195713) do
 
   create_table "exercises", force: true do |t|
     t.string   "name"
     t.string   "description"
     t.string   "image"
+    t.string   "category"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -42,7 +43,9 @@ ActiveRecord::Schema.define(version: 20140212144745) do
     t.string   "height"
     t.string   "bio"
     t.string   "gender"
+    t.string   "age"
     t.boolean  "admin",                  default: false
+    t.string   "measurement_system"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
@@ -66,8 +69,7 @@ ActiveRecord::Schema.define(version: 20140212144745) do
 
   create_table "workouts", force: true do |t|
     t.integer  "user_id"
-    t.integer  "exercise_id"
-    t.integer  "set_id"
+    t.integer  "workoutset_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

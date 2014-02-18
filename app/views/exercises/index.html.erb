@@ -8,12 +8,14 @@
 	<tr>
 		<th>Name</th>
 		<th>Description</th>
+		<th>Category</th>
 		<th>Options</th>
 	</tr>
 		<% @exercises.each do |exercise| %>
 		<tr>
 			<td><%= exercise.name %></td>
 			<td><%= exercise.description %></td>
+			<td><%= exercise.category %></td>
 			<td><% if current_user.admin %><%= link_to "Delete", exercise_path(exercise), :method => :delete, class: "glyphicon glyphicon-trash" %>&nbsp;<%= link_to 'Edit', edit_exercise_path(exercise), class: "glyphicon glyphicon-edit" %><% else %>No Options<%end%></td>
 		</tr>
 		<% end %>

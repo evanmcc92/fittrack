@@ -12,7 +12,13 @@
   <% end -%>
 
   <p><%= f.label :gender %><br />
-  <%= f.label "Male" %>: <%= f.radio_button(:gender, "Male") %>&nbsp;&nbsp;<%= f.label "Female" %>: <%= f.radio_button(:gender, "Female") %></p>
+  Male: <%= f.radio_button(:gender, "Male") %>&nbsp;&nbsp;Female: <%= f.radio_button(:gender, "Female") %></p>
+
+  <p><%= f.label :Birthday %><br />
+  <%= f.text_field :age, id: "datepicker" %></p>
+
+  <p><%= f.label :measurement_system %><br />
+  U.S.: <%= f.radio_button(:measurement_system, "US") %>&nbsp;&nbsp;Metric: <%= f.radio_button(:measurement_system, "Metric") %></p>
 
   <p><%= f.label :height %><br />
   <%= f.text_field :height %></p>
@@ -47,3 +53,15 @@
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "btn btn-danger" %></p>
 
 <%= link_to "Back", :back %>
+
+
+
+<script>
+  $(function() {
+    $( "#datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+      minDate: new Date(1900, 1, 1)
+    });
+  });
+  </script>

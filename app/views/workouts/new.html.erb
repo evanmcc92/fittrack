@@ -1,2 +1,9 @@
 <h1>Workouts#new</h1>
-<p>Find me in app/views/workouts/new.html.erb</p>
+
+<%= form_for @workout do |f| %>
+
+<%= render "workout_sets/form" %>
+
+<%= f.submit "Create workout", class: "btn btn-large btn-primary" %>
+
+<% end -%>
