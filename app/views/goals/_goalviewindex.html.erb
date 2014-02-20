@@ -1,0 +1,26 @@
+<div id="user-info">
+	<h4>Goals</h4>
+	<% if current_user.goals.any? %>
+		<table class="table">
+			<tr>
+				<th>Exercise</th>
+				<th>Goal</th>
+				<th>Complete</th>
+				<% if current_user %>
+					<th>Options</th>		
+				<% end %>
+			</tr>
+			<% current_user.goals.each do |goal| %>
+				<tr>
+					<td><%= Exercise.find(goal.exercise_id).name %></td>
+					<td><%= goal.weight %><%= goal.distance %><%= goal.time %></td>
+					<td><%= goal.complete ? "Yes" : "No" %></td>
+					<% if current_user %>
+						<td><%= link_to "", goal_path(goal), :method => :delete, class: "glyphicon glyphicon-trash" %>&nbsp;<%= link_to '', edit_goal_path(goal), class: "glyphicon glyphicon-edit" %></td>		
+					<% end %>
+				</tr>
+			<% end %>
+		</table>
+	<% end %>
+	<a href="#createexercise" data-toggle="modal" >Create a new goal</a>
+</div>

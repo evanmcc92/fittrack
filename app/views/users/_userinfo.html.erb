@@ -1,13 +1,31 @@
 <div id="user-info">
-	<p>Name: <%= current_user.name%></p>
+	
+	<p><strong><%= current_user.name%></strong></p>
+	
 	<p>Gender: <%= current_user.gender%></p>
+	
 	<p>Height: <%= current_user.height%>
-	<% if current_user.weight != "" %><% if current_user.measurement_system == "US" %> inches<% else %> cm<% end %><% end %></p>
-	<p>Weight: <%= current_user.weight%><% if current_user.weight != "" %><% if current_user.measurement_system == "US" %> lbs<% else %> kg<% end %><% end %></p>
+		<% if current_user.weight != "" %>
+			<% if current_user.measurement_system == "US" %> inches
+			<% else %> cm
+			<% end %>
+		<% end %>
+	</p>
+
+	<p>Weight: <%= current_user.weight%>
+		<% if current_user.weight != "" %>
+			<% if current_user.measurement_system == "US" %> lbs<% end %>
+			<% if current_user.measurement_system == "Metric" %> kg<% end %>
+		<% end %>
+	</p>
+
 	<p>Bio: <%= current_user.bio%></p>
+	
 	<p>Age: <% if current_user.age %><%= current_user.age%><% end %></p>
+	
 	<% if current_user.admin %>
-	<p>Admin: True</p>
+		<p>Admin: True</p>
 	<% end -%>
+	
 	<%= link_to "Missing information? Fill it in here", edit_user_registration_path(current_user) %>
 </div>

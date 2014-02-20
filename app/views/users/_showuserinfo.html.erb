@@ -1,0 +1,37 @@
+<div id="user-info">
+	<p><strong><%= @user.name%></strong></p>
+
+	<p>Gender: <%= @user.gender%></p>
+
+	<% if @user.height != "" %>
+		<p>Height: <%= @user.height%>
+			<% if @user.height != "" %>
+				<% if @user.measurement_system == "US" %> inches
+				<% else %> cm
+				<% end %>
+			<% end %>
+		</p>
+	<% end %>
+
+	<% if @user.weight != "" %>
+		<p>Weight: <%= @user.weight%>
+			<% if @user.weight != "" %>
+				<% if @user.measurement_system == "US" %> lbs
+				<% else %> kg
+				<% end %>
+			<% end %>
+		</p>
+	<% end %>
+
+	<% if @user.bio != "" %>
+		<p>Bio: <%= @user.bio %></p>
+	<% end %>
+
+	<% if @user.age != "" %>
+		<p>Age: <%= @user.age %></p>
+	<% end %>
+
+	<% if @user == current_user %>
+		<%= link_to "Missing information? Fill it in here", edit_user_registration_path(@user) %>
+	<% end %>
+</div>

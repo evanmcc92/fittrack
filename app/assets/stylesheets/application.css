@@ -25,11 +25,9 @@
 #body {
 	padding: 10px;
 }
-#index-col-md-8 {
-	padding-right: -10px;
-}
 #user-info {
 	border: 5px solid #dddddd;
 	padding: 5px;
   border-radius: 4px;
+  margin-bottom: 10px;
 }
