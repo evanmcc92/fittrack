@@ -9,6 +9,18 @@ class GoalsController < ApplicationController
 		end
 	end
 
+	def edit
+		@goal = Goal.find(params[:id])
+    end
+
+	def update
+		@goal = Goal.find(params[:id])
+
+	    if @goal.update_attributes(goal_params)
+			redirect_to root_path
+	  	end
+    end
+
 	def destroy
 	    @goal = Goal.find(params[:id])
 	    @goal.destroy
@@ -17,6 +29,6 @@ class GoalsController < ApplicationController
 
 	private
 		def goal_params
-  			params.require(:goal).permit(:exercise_id, :weight, :distance, :time)
+  			params.require(:goal).permit(:exercise_id, :weight, :distance, :time, :complete)
   		end
 end

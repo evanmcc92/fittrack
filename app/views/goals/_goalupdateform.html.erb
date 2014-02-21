@@ -1,0 +1,20 @@
+<%= form_for(@goal) do |f| %>
+
+	<p><%= f.label :exercise %><br>
+	<%= f.collection_select :exercise_id, Exercise.all, :id, :name %></p>
+
+	<p>&nbsp;</p>
+
+	<h4>If Applicable</h4>
+	
+	<p><%= f.label :weight %><br>
+	<%= f.text_field :weight %></p>
+	
+	<p><%= f.label :distance %><br>
+	<%= f.text_field :distance %></p>
+	
+	<p><%= f.label :time %><br>
+	<%= f.text_field :time %></p>
+
+	<%= f.submit "Submit", class: "btn btn-primary" %>
+<% end %>

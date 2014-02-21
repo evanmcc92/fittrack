@@ -14,9 +14,20 @@
 				<tr>
 					<td><%= Exercise.find(goal.exercise_id).name %></td>
 					<td><%= goal.weight %><%= goal.distance %><%= goal.time %></td>
-					<td><%= goal.complete ? "Yes" : "No" %></td>
+					<td><% if goal.complete == false %>
+						<%= form_for goal do |f| %>
+									<%= f.hidden_field :complete, :value => true %>
+									<%= f.submit "Complete", class: "btn btn-default btn-sm" %>
+						<% end %>
+					<% else %>
+						<%= form_for goal do |f| %>
+									<%= f.hidden_field :complete, :value => false %>
+									<%= f.submit "Incomplete", class: "btn btn-default btn-sm" %>
+						<% end %>
+					<% end %></td>
 					<% if current_user %>
-						<td><%= link_to "", goal_path(goal), :method => :delete, class: "glyphicon glyphicon-trash" %>&nbsp;<%= link_to '', edit_goal_path(goal), class: "glyphicon glyphicon-edit" %></td>		
+						<td><%= link_to "", goal_path(goal), :method => :delete, class: "glyphicon glyphicon-trash" %>&nbsp;
+						<%= link_to '', edit_goal_path(goal), class: "glyphicon glyphicon-edit" %></td>		
 					<% end %>
 				</tr>
 			<% end %>
