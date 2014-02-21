@@ -28,7 +28,7 @@
 	<% end %>
 
 	<% if @user.age != "" %>
-		<p>Birthday: <%= current_user.age %></p>
+		<p>Birthday: <%= current_user.age.distance_of_time_in_words %></p>
 	<% end %>
 
 	<% if @user == current_user %>
