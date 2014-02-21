@@ -7,7 +7,7 @@
   <p><%= f.label :name %><br />
   <%= f.text_field :name, :autofocus => true %></p>
 
-  <% if current_user.id = 1 %>
+  <% if current_user.id = 1 && current_user.id = 2 %>
     <p><%= f.check_box :admin %> <%= f.label :admin %></p>
   <% end -%>
 
