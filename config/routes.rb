@@ -3,13 +3,8 @@ Fittrack::Application.routes.draw do
   resources :exercises
   root "static_page#index"
   devise_for :users
-  resources :users do
-    member do
-      get :following, :followers
-    end
-  end
+  resources :users
   resources :goals
-  resources :relationships, only: [:create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
