@@ -28,7 +28,7 @@
 	<% end %>
 
 	<% if @user.age != "" %>
-		<p>Age: <%= Time.now - current_user.age %></p>
+		<p>Age: <%= Time.now - current_user.age.year %></p>
 	<% end %>
 
 	<% if @user == current_user %>
