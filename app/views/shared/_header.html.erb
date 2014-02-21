@@ -14,6 +14,12 @@
     <% if current_user %>
       <ul class="nav navbar-nav navbar-right">
 
+        <li>
+          <%= form_tag(users_path, :method => 'get', :class => "navbar-form") do %>
+              <%= text_field_tag :search, params[:search], :class => "input-small appendedInputButton form-control", :placeholder => "Search for friends" %>
+          <% end %>
+        </li>
+
         <% if current_user.admin %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>

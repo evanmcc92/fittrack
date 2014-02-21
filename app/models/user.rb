@@ -5,4 +5,9 @@ class User < ActiveRecord::Base
 
   has_many :exercises
   has_many :goals
+
+  #search
+	def self.search(query)
+      where("name like ? ", "%#{query}%")
+	end
 end
