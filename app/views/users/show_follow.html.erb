@@ -1,0 +1,18 @@
+
+<div class="row">
+  <div class="col-md-4">
+    <%= render "users/showuserinfo" %>
+    <%= render "goals/goalviewshow" %>
+  </div>
+  <div class="col-md-8">
+    <% provide(:title, @title) %>
+    <h1><%= @title %></h1>
+    <% if @users.any? %>
+      <ul class="users">
+        <%= render @users %>
+      </ul>
+    <% end %>
+  </div>
+</div>
+
+    <%= render "goals/goalform" %>
