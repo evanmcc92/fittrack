@@ -28,7 +28,7 @@
 	<% end %>
 
 	<% if @user.age != "" %>
-		<p>Age: <%= Time.now - current_user.age.year %></p>
+		<p>Age: <%= ((Time.now - current_user.age)/ 365.25).to_i %></p>
 	<% end %>
 
 	<% if @user == current_user %>
