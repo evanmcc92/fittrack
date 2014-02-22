@@ -1,6 +1,7 @@
 Fittrack::Application.routes.draw do
 
   resources :exercises
+
   root "static_page#index"
   devise_for :users
   resources :users
