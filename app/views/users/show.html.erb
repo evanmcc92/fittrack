@@ -1,12 +1,17 @@
 <div class="row">
 	<div class="col-md-4">
 		<%= render "users/showuserinfo" %>
+		<%= render "posts/post_form" %>
 		<%= render "goals/goalviewshow" %>
 	</div>
 	<div class="col-md-8">
 		<h1><%= @user.name %></h1>
-		<p>Find me in app/views/users/show.html.erb</p>
+		<% if @user.posts.any? %>
+			<%= render @posts %>
+		<% else %>
+			<p>I'm not very social</p>
+		<% end %>
 	</div>
 </div>
 
-		<%= render "goals/goalform" %>
+<%= render "goals/goalform" %>

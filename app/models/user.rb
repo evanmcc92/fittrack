@@ -5,9 +5,15 @@ class User < ActiveRecord::Base
 
   has_many :exercises
   has_many :goals
+  has_many :posts, dependent: :destroy
 
   #search
 	def self.search(query)
       where("name like ? ", "%#{query}%")
 	end
+
+	def feed
+    	# This is preliminary. See "Following users" for the full implementation.
+    	Post.where("user_id = ?", id)
+  	end
 end

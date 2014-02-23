@@ -1,0 +1,11 @@
+<div class="panel panel-default" id="post-<%= feed_item.id %>" >
+	<div class="panel-heading">
+		<%= time_ago_in_words(feed_item.created_at) %>
+		<% if current_user == feed_item.user %>
+			<%= link_to "delete", post_path(feed_item), :method => :delete %>
+		<% end %>
+	</div>
+	<div class="panel-body">
+		<%= feed_item.content %>
+	</div>
+</div>

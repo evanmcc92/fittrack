@@ -1,0 +1,7 @@
+<div id="user-info">
+	<h4>Post something</h4>
+	<%= form_for @post do |f| %>
+		<p><%= f.text_area :content, placeholder: "Compose new post...", class: "form-control" %></p>
+		<p><%= f.submit "Post", class: "btn btn-large btn-primary" %></p>
+	<% end %>
+</div>

@@ -1,11 +1,14 @@
 Fittrack::Application.routes.draw do
 
+  get "posts/create"
+  get "posts/destroy"
   resources :exercises
 
   root "static_page#index"
   devise_for :users
   resources :users
   resources :goals
+  resources :posts, only: [:create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

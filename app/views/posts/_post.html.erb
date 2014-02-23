@@ -1,0 +1,11 @@
+<div class="panel panel-default" id="post-<%= post.id %>" >
+	<div class="panel-heading">
+		<%= time_ago_in_words(post.created_at) %>
+		<% if current_user == post.user %>
+			<%= link_to "delete", post_path(post), :method => :delete %>
+		<% end %>
+	</div>
+	<div class="panel-body">
+		<%= post.content %>
+	</div>
+</div>
