@@ -6,7 +6,12 @@ Fittrack::Application.routes.draw do
 
   root "static_page#index"
   devise_for :users
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+  resources :relationships, only: [:create, :destroy]
   resources :goals
   resources :posts, only: [:create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.

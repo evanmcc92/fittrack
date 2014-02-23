@@ -1,5 +1,7 @@
 <div id="user-info">
 	<p><strong><%= @user.name%></strong></p>
+        <%= render 'shared/stats' %>
+    <%= render 'follow_form' if signed_in? %>
 
 	<p>Gender: <%= @user.gender%></p>
 

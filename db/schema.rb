@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140222234907) do
+ActiveRecord::Schema.define(version: 20140223160043) do
 
   create_table "exercises", force: true do |t|
     t.string   "name"
@@ -55,6 +55,10 @@ ActiveRecord::Schema.define(version: 20140222234907) do
     t.datetime "updated_at"
   end
 
+  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id"
+  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
+  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -73,35 +77,12 @@ ActiveRecord::Schema.define(version: 20140222234907) do
     t.string   "height"
     t.string   "bio"
     t.string   "gender"
-    t.string   "age"
+    t.datetime "age"
     t.boolean  "admin",                  default: false
     t.string   "measurement_system"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-
-  create_table "workout_sets", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "exercise_id"
-    t.integer  "workout_id"
-    t.string   "rep"
-    t.string   "weight"
-    t.string   "time"
-    t.string   "distance"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "workout_sets", ["exercise_id"], name: "index_workout_sets_on_exercise_id"
-  add_index "workout_sets", ["user_id"], name: "index_workout_sets_on_user_id"
-  add_index "workout_sets", ["workout_id"], name: "index_workout_sets_on_workout_id"
-
-  create_table "workouts", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "workoutset_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
 end
