@@ -1,30 +1,22 @@
 <% provide(:title, @title) %>
+
 <div class="row">
-  <aside class="span4">
-    <section>
-      <%= gravatar_for @user %>
-      <h1><%= @user.name %></h1>
-      <span><%= link_to "view my profile", @user %></span>
-      <span><b>Microposts:</b> <%= @user.microposts.count %></span>
-    </section>
-    <section>
-      <%= render 'shared/stats' %>
-      <% if @users.any? %>
-        <div class="user_avatars">
-          <% @users.each do |user| %>
-            <%= link_to gravatar_for(user, size: 30), user %>
-          <% end %>
-        </div>
-      <% end %>
-    </section>
-  </aside>
-  <div class="span8">
-    <h3><%= @title %></h3>
+  <div class="col-md-4">
+    <%= render "users/showuserinfo" %>
+    <%= render "goals/goalviewshow" %>
+  </div>
+  <div class="col-md-8">
+  <h1><%= @user.name %>'s <%= @title %></h1>
     <% if @users.any? %>
-      <ul class="users">
-        <%= render @users %>
-      </ul>
-      <%= will_paginate %>
+      <% @users.each do |f| %>
+        <p><%= link_to f.name, user_path(f) %></p>
+        <% if f.bio %>
+          <small><%= f.bio %></small>
+        <% end %>
+        <p><%= link_to "#{f.followers.count} Followers", followers_user_path(f) %> | <%= link_to "#{f.followed_users.count} Followers", following_user_path(f) %></p>
+      <% end %>
     <% end %>
   </div>
 </div>
+
+<%= render "goals/goalform" %>

@@ -21,5 +21,17 @@ class User < ActiveRecord::Base
 	def feed
     	# This is preliminary. See "Following users" for the full implementation.
     	Post.from_users_followed_by(self)
-  	end
+  end
+
+  def following?(other_user)
+    relationships.find_by(followed_id: other_user.id)
+  end
+
+  def follow!(other_user)
+    relationships.create!(followed_id: other_user.id)
+  end
+
+  def unfollow!(other_user)
+    relationships.find_by(followed_id: other_user.id).destroy
+  end
 end
