@@ -1,11 +1,13 @@
 <div class="panel panel-default" id="post-<%= post.id %>" >
 	<div class="panel-heading">
 		Posted <%= time_ago_in_words(post.created_at) %> ago.
-		<% if current_user == post.user %>
-			<%= link_to "delete", post_path(post), :method => :delete %>
-		<% end %>
 	</div>
 	<div class="panel-body">
 		<%= post.content %>
 	</div>
+  		<% if current_user == post.user %>
+  	<div class="panel-footer">
+		<%= link_to "", post_path(post), :method => :delete, class: "glyphicon glyphicon-trash" %>
+  	</div>
+		<% end %>
 </div>
