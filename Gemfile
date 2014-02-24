@@ -24,3 +24,4 @@ group :production do
 end
 
 gem 'devise'
+gem 'newrelic_rpm'

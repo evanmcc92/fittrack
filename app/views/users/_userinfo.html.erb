@@ -23,7 +23,7 @@
 
 	<p>Bio: <%= current_user.bio%></p>
 	
-	<p>Age: <% if current_user.age %><%= current_user.age %><% end %></p>
+	<p>Age: <% if current_user.age %><%= distance_of_time_in_words(Time.now ,current_user.age) %><% end %></p>
 	
 	<% if current_user.admin %>
 		<p>Admin: True</p>
