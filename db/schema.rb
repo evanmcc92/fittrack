@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140224150619) do
+ActiveRecord::Schema.define(version: 20140225022428) do
 
   create_table "exercises", force: true do |t|
     t.string   "name"
@@ -85,22 +85,19 @@ ActiveRecord::Schema.define(version: 20140224150619) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
-  create_table "wo_reps", force: true do |t|
+  create_table "wo_sets", force: true do |t|
+    t.integer  "workout_id"
+    t.integer  "exercise_id"
+    t.string   "rep"
     t.string   "weight"
     t.string   "time"
     t.string   "distance"
-    t.integer  "wo_set_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "wo_sets", force: true do |t|
-    t.integer  "wo_rep_id"
-    t.integer  "workout_id"
-    t.integer  "exercise_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+  add_index "wo_sets", ["exercise_id"], name: "index_wo_sets_on_exercise_id"
+  add_index "wo_sets", ["workout_id"], name: "index_wo_sets_on_workout_id"
 
   create_table "workouts", force: true do |t|
     t.integer  "user_id"
@@ -108,5 +105,8 @@ ActiveRecord::Schema.define(version: 20140224150619) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "workouts", ["user_id"], name: "index_workouts_on_user_id"
+  add_index "workouts", ["wo_set_id"], name: "index_workouts_on_wo_set_id"
 
 end

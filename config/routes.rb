@@ -1,7 +1,6 @@
 Fittrack::Application.routes.draw do
 
-  get "posts/create"
-  get "posts/destroy"
+  resources :workouts
   resources :exercises
 
   root "static_page#index"

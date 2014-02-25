@@ -1,3 +1,3 @@
 class Workout < ActiveRecord::Base
-	has_many :wo_sets
+  belongs_to :user
 end

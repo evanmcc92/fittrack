@@ -1,35 +1,22 @@
 class WorkoutsController < ApplicationController
-  def new
-    @workout = Workout.new
-  end
-
-  def create
-    @workout = current_user.workouts.create(workout_params)
-
-    if @workout.save
-      redirect_to workouts_path
-    else
-      redirect_to root_path
-    end
-
-  end
-
-  def edit
+  def index
   end
 
   def show
   end
 
+  def new
+  end
+
+  def edit
+  end
+
+  def create
+  end
+
   def update
   end
 
-  def index
-    @workouts = current_user.workouts.all
+  def destroy
   end
-
-  private
-    def workout_params
-      params.require(:workout).permit(:workoutset)
-    end
-
 end

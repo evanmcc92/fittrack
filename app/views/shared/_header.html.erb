@@ -19,6 +19,7 @@
               <%= text_field_tag :search, params[:search], :class => "input-small appendedInputButton form-control", :placeholder => "Search for friends" %>
           <% end %>
         </li>
+        <li><%= link_to "Create a workout", new_workout_path %></li>
 
         <% if current_user.admin %>
         <li class="dropdown">
