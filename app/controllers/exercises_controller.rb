@@ -19,10 +19,12 @@ class ExercisesController < ApplicationController
 
   def new
     @exercise = Exercise.new
+    @post = current_user.posts.build
   end
 
   def edit
     @exercise = Exercise.find(params[:id])
+    @post = current_user.posts.build
   end
 
 
@@ -42,6 +44,7 @@ class ExercisesController < ApplicationController
 
   def index
   	@exercises = Exercise.all
+    @post = current_user.posts.build
   end
 
   private

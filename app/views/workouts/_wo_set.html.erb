@@ -1,0 +1,12 @@
+<div class="set">
+	<%= fields_for @workout, :wo_sets do |w| %>
+
+		<p><%= w.label :exercise %>: <%= w.collection_select :exercise_id, Exercise.all, :id, :name %><br>
+		<%= w.label :rep %>: <%= w.text_field :rep %><br>
+		<%= w.label :weight %>: <%= w.text_field :weight %><br>
+		<%= w.label :time %>: <%= w.text_field :time %><br>
+		<%= w.label :distance %>: <%= w.text_field :distance %></p>
+		<p><%= link_to_function "Remove", "$(this).up('.sets').remove()" %></p>
+
+	<% end %>
+</div>

@@ -1,2 +1,14 @@
-<h1>Workouts#index</h1>
-<p>Find me in app/views/workouts/index.html.erb</p>
+<div class="row">
+	<div class="col-md-4">
+		<%= render "users/userinfo" %>
+		<%= render "posts/post_form" %>
+		<%= render "goals/goalviewindex" %>
+	</div>
+	<div class="col-md-8">
+		<h1>All My Workouts</h1>
+
+		<% current_user.workouts.each do |workout| %>
+			<%= render workout %>
+		<% end %>
+	</div>
+</div>

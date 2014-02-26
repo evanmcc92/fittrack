@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
     @post = current_user.posts.build
     @posts = @user.posts
+    @workouts = @user.workouts
   end
 
   def index

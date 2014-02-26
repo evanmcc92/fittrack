@@ -1,27 +1,36 @@
-<h1>Exercises</h1>
+<div class="row">
+	<div class="col-md-4">
+		<%= render "users/userinfo" %>
+		<%= render "posts/post_form" %>
+		<%= render "goals/goalviewindex" %>
+	</div>
+	<div class="col-md-8">
+		<h1>Exercises</h1>
 
-<% if @exercises %>
-<h3><%= link_to "+ Exercise", new_exercise_path %></h3>
+		<% if @exercises %>
+		<h3><%= link_to "+ Exercise", new_exercise_path %></h3>
 
 
-<table class="table table-hover table-bordered">
-<col span="1" style="width: 15%;">
-<col span="2" style="width: 75%;">
-	<tr>
-		<th>Name</th>
-		<th>Description</th>
-		<th>Category</th>
-		<th>Options</th>
-	</tr>
-		<% @exercises.each do |exercise| %>
-		<tr>
-			<td><%= exercise.name %></td>
-			<td><%= exercise.description %></td>
-			<td><%= exercise.category %></td>
-			<td><% if current_user.admin %><%= link_to "Delete", exercise_path(exercise), :method => :delete, class: "glyphicon glyphicon-trash" %>&nbsp;<%= link_to 'Edit', edit_exercise_path(exercise), class: "glyphicon glyphicon-edit" %><% else %>No Options<%end%></td>
-		</tr>
+		<table class="table table-hover table-bordered">
+		<col span="1" style="width: 15%;">
+		<col span="2" style="width: 75%;">
+			<tr>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Category</th>
+				<th>Options</th>
+			</tr>
+				<% @exercises.each do |exercise| %>
+				<tr>
+					<td><%= exercise.name %></td>
+					<td><%= exercise.description %></td>
+					<td><%= exercise.category %></td>
+					<td><% if current_user.admin %><%= link_to "Delete", exercise_path(exercise), :method => :delete, class: "glyphicon glyphicon-trash" %>&nbsp;<%= link_to 'Edit', edit_exercise_path(exercise), class: "glyphicon glyphicon-edit" %><% else %>No Options<%end%></td>
+				</tr>
+				<% end %>
+		</table>
+		<% else %>
+			<p>No Exercises</p>
 		<% end %>
-</table>
-<% else %>
-	<p>No Exercises</p>
-<% end %>
+	</div>
+</div>

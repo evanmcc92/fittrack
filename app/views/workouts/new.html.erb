@@ -1,4 +1,36 @@
-<h1>Workouts#new</h1>
-<p>Find me in app/views/workouts/new.html.erb</p>
+<div class="row">
+	<div class="col-md-4">
+		<%= render "users/userinfo" %>
+		<%= render "posts/post_form" %>
+		<%= render "goals/goalviewindex" %>
+	</div>
+	<div class="col-md-8">
+		<h1>Create a Workout</h1>
+		<p>Fill out the following accordingly</p>
+
+		<p>&nbsp;</p>
 
 
+		<%= form_for @workout do |f| %>
+			<div id="sets">
+
+		  		<div class="set">
+					<%= f.fields_for :wo_sets do |w| %>
+
+						<p><%= w.label :exercise %>: <%= w.collection_select :exercise_id, Exercise.all, :id, :name %><br>
+						<%= w.label :rep %>: <%= w.text_field :rep %><br>
+						<%= w.label :weight %>: <%= w.text_field :weight %><br>
+						<%= w.label :time %>: <%= w.text_field :time %><br>
+						<%= w.label :distance %>: <%= w.text_field :distance %></p>
+
+					<% end %>
+				</div>
+
+			</div>
+
+
+			<p><%= f.submit :submit, class: "btn btn-primary" %></p>
+
+		<% end %>
+	</div>
+</div>

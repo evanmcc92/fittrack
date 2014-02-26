@@ -1,14 +1,18 @@
 class WorkoutsController < ApplicationController
   def index
-    @workouts = Workout.all
+    @workouts = current_user.workouts.all
+    @post = current_user.posts.build
   end
 
   def show
     @workout = Workout.find(params[:id])
+    @post = current_user.posts.build
   end
 
   def new
     @workout = Workout.new
+    @workout.wo_sets.build
+    @post = current_user.posts.build
   end
 
   def edit
@@ -21,6 +25,7 @@ class WorkoutsController < ApplicationController
       redirect_to @workout
     else
       redirect_to root_path
+      @feed_items = []
     end
   end
 
@@ -31,11 +36,11 @@ class WorkoutsController < ApplicationController
     @workout = Workout.find(params[:id])
     @workout.destroy
 
-    redirect_to :back
+    redirect_to workouts_path
   end
 
   private
     def workout_params
-      params.require(:workout).permit(:user_id, :wo_set_ids, :wo_set.exercise_id, :wo_set.rep, :wo_set.weight, :wo_set.time, :wo_set.distance)
+      params.require(:workout).permit(:user_id, wo_sets_attributes:[:exercise_id, :rep, :weight, :time, :distance])
     end
 end

@@ -1,3 +1,15 @@
-<h1>Workouts#show</h1>
-<p>Find me in app/views/workouts/show.html.erb</p>
-<%= workout.id %>
+
+
+<div class="row">
+	<div class="col-md-4">
+		<%= render "users/userinfo" %>
+		<%= render "posts/post_form" %>
+		<%= render "goals/goalviewindex" %>
+	</div>
+	<div class="col-md-8">
+		<h1>Workout from <%= @workout.created_at.strftime '%m/%d/%Y' %></h1>
+
+		<%= render @workout %>
+
+	</div>
+</div>
