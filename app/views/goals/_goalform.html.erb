@@ -9,17 +9,17 @@
 				<%= form_for Goal.new do |f| %>
 
 					<p><%= f.label :exercise %><br>
-    				<%= f.collection_select :exercise_id, Exercise.all, :id, :name %></p>
+    				<%= f.collection_select :exercise_id, Exercise.all, :id, :name, {prompt: "Select a exercise"}, {class: "form-control"}  %></p>
     				<p>&nbsp;</p>
 					<h4>If Applicable</h4>
 					<p><%= f.label :weight %><br>
-					<%= f.text_field :weight %></p>
+					<%= f.text_field :weight, class: "form-control" %></p>
 					
 					<p><%= f.label :distance %><br>
-					<%= f.text_field :distance %></p>
+					<%= f.text_field :distance , class: "form-control"%></p>
 					
 					<p><%= f.label :time %><br>
-					<%= f.text_field :time %></p>
+					<%= f.text_field :time, class: "form-control" %></p>
 
 				</div>
       			<div class="modal-footer">

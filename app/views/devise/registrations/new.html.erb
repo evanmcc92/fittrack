@@ -4,7 +4,7 @@
   <%= devise_error_messages! %>
 
   <p><%= f.label :name %><br />
-  <%= f.text_field :name, :autofocus => true %></p>
+  <%= f.text_field :name, :autofocus => true, class: "form-control" %></p>
 
   <p><%= f.label :gender %><br />
   Male: <%= f.radio_button(:gender, "Male") %>&nbsp;&nbsp;Female: <%= f.radio_button(:gender, "Female") %></p>
@@ -13,13 +13,13 @@
   U.S.: <%= f.radio_button(:measurement_system, "US") %>&nbsp;&nbsp;Metric: <%= f.radio_button(:measurement_system, "Metric") %></p>
 
   <p><%= f.label :email %><br />
-  <%= f.email_field :email %></p>
+  <%= f.email_field :email, class: "form-control" %></p>
 
   <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
+  <%= f.password_field :password, class: "form-control" %></p>
 
   <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></p>
+  <%= f.password_field :password_confirmation, class: "form-control" %></p>
 
   <p><%= f.submit "Sign up", class: "btn btn-primary" %></p>
 <% end %>

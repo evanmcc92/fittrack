@@ -17,11 +17,11 @@
 		  		<div class="set">
 					<%= f.fields_for :wo_sets do |w| %>
 
-						<p><%= w.label :exercise %>: <%= w.collection_select :exercise_id, Exercise.all, :id, :name %><br>
-						<%= w.label :rep %>: <%= w.text_field :rep %><br>
-						<%= w.label :weight %>: <%= w.text_field :weight %><br>
-						<%= w.label :time %>: <%= w.text_field :time %><br>
-						<%= w.label :distance %>: <%= w.text_field :distance %></p>
+						<p><%= w.label :exercise %>: <%= w.collection_select :exercise_id, Exercise.all, :id, :name, {prompt: "Select a exercise"}, {class: "form-control"}  %><br>
+						<%= w.label :rep %>: <%= w.text_field :rep, class: "form-control" %><br>
+						<%= w.label :weight %>: <%= w.text_field :weight, class: "form-control" %><br>
+						<%= w.label :time %>: <%= w.text_field :time, class: "form-control" %><br>
+						<%= w.label :distance %>: <%= w.text_field :distance, class: "form-control" %></p>
 
 					<% end %>
 				</div>

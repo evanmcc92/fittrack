@@ -5,54 +5,54 @@
 
 
   <p><%= f.label :name %><br />
-  <%= f.text_field :name, :autofocus => true %></p>
+  <%= f.text_field :name, :autofocus => true, class: "form-control" %></p>
 
   <% if current_user.id = 1 && current_user.id = 2 %>
+  <div class="checkbox">
     <p><%= f.check_box :admin %> <%= f.label :admin %></p>
+    </div>
   <% end -%>
-
+  
   <p><%= f.label :gender %><br />
   Male: <%= f.radio_button(:gender, "Male") %>&nbsp;&nbsp;Female: <%= f.radio_button(:gender, "Female") %></p>
 
   <p><%= f.label :Birthday %><br />
-  <%= f.text_field :age, id: "datepicker" %></p>
+  <%= f.text_field :age, id: "datepicker", class: "form-control" %></p>
 
   <p><%= f.label :measurement_system %><br />
   U.S.: <%= f.radio_button(:measurement_system, "US") %>&nbsp;&nbsp;Metric: <%= f.radio_button(:measurement_system, "Metric") %></p>
 
   <p><%= f.label :height %><br />
-  <%= f.text_field :height %></p>
+  <%= f.text_field :height, class: "form-control" %></p>
 
   <p><%= f.label :weight %><br>
-  <%= f.text_field :weight %></p>
+  <%= f.text_field :weight, class: "form-control" %></p>
 
   <p><%= f.label :email %><br />
-  <%= f.email_field :email %></p>
+  <%= f.email_field :email, class: "form-control" %></p>
 
   <p><%= f.label :bio %><br />
-  <%= f.text_area :bio %></p>
+  <%= f.text_area :bio, class: "form-control" %></p>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
   <% end %>
 
   <p><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password, :autocomplete => "off" %></p>
+  <%= f.password_field :password, :autocomplete => "off", class: "form-control" %></p>
 
   <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></p>
+  <%= f.password_field :password_confirmation, class: "form-control" %></p>
 
   <p><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></p>
+  <%= f.password_field :current_password, class: "form-control" %></p>
 
   <p><%= f.submit "Update", class: "btn btn-primary" %></p>
 <% end %>
 
 <h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "btn btn-danger" %></p>
-
-<%= link_to "Back", :back %>
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "btn btn-danger" %></p>\
 
 
 
