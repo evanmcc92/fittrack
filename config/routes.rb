@@ -1,5 +1,7 @@
 Fittrack::Application.routes.draw do
 
+  get "feeds/create"
+  get "feeds/destroy"
   resources :workouts
   resources :exercises
 

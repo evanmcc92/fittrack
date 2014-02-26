@@ -25,7 +25,6 @@ class WorkoutsController < ApplicationController
       redirect_to @workout
     else
       redirect_to root_path
-      @feed_items = []
     end
   end
 

@@ -1,0 +1,49 @@
+
+<% if @feed.model_name =="Post" %>
+<% @feed.where(:model_name =="Post").each do |feed_item| %>
+
+	<div class="panel panel-default" id="post-<%= feed_item.item_id %>" >
+		<div class="panel-heading">
+			<%= link_to feed_item.user.name, feed_item.user %>. Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
+		</div>
+
+		<div class="panel-body">
+			<%= feed_item.content %>
+		</div>
+
+	  	<% if current_user == feed_item.user %>
+	  		<div class="panel-footer">
+				<%= link_to "", post_path(feed_item), :method => :delete, class: "glyphicon glyphicon-trash" %>
+	  		</div>
+		<% end %>
+	</div>
+<% end %>
+
+<% else %>
+
+<% @feed.where(:model_name =="Workout").each do |feed_item| %>
+
+	<div class="panel panel-default" id="workout-<%= feed_item.item_id %>" >
+		<div class="panel-heading">
+			<%= link_to feed_item.workouts.user.name, feed_item.workouts.user %>. Workout comleted <%= time_ago_in_words(feed_item.workouts.created_at) %> ago.
+		</div>
+		<div class="panel-body">
+			<p>Workout id: <%= feed_item.id %><br>
+			Date done: <%= feed_item.created_at.strftime '%m/%d/%Y' %></p>
+
+			<% feed_item.workouts.wo_sets.each do |wo_set| %>
+				<p><% if wo_set.rep != "" %><%= Exercise.find(wo_set.exercise_id).name %> rep: <%= wo_set.rep %><br><% end %>
+				<% if wo_set.weight != "" %><%= Exercise.find(wo_set.exercise_id).name %> weight: <%= wo_set.weight %><br><% end %>
+				<% if wo_set.distance != "" %><%= Exercise.find(wo_set.exercise_id).name %> distance: <%= wo_set.distance %><br><% end %>
+				<% if wo_set.time != "" %><%= Exercise.find(wo_set.exercise_id).name %> time: <%= wo_set.time %><% end %></p>
+			<% end %>
+		</div>
+	  	<% if current_user == feed_item.user %>
+		  	<div class="panel-footer">
+				<%= link_to "", workout_path(feed_item), :method => :delete, class: "glyphicon glyphicon-trash" %>
+		  	</div>
+		<% end %>
+	</div>
+
+<% end %>
+<% end %>

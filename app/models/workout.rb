@@ -10,10 +10,5 @@ class Workout < ActiveRecord::Base
     followed_user_ids = "SELECT followed_id FROM relationships WHERE follower_id = :user_id"
     where("user_id IN (#{followed_user_ids}) OR user_id = :user_id", user_id: user.id)
   end
-
-  def task_attributes=(task_attributes)
-	  task_attributes.each do |attributes|
-	    wo_sets.build(attributes)
-	  end
-	end
+  
 end
