@@ -11,23 +11,41 @@
 		<p>&nbsp;</p>
 
 
-		<%= form_for @workout do |f| %>
+		<%= nested_form_for @workout do |f| %>
 			<div id="sets">
 
 		  		<div class="set">
 					<%= f.fields_for :wo_sets do |w| %>
-
-						<p><%= w.label :exercise %>: <%= w.collection_select :exercise_id, Exercise.all, :id, :name, {prompt: "Select a exercise"}, {class: "form-control"}  %><br>
-						<%= w.label :rep %>: <%= w.text_field :rep, class: "form-control" %><br>
-						<%= w.label :weight %>: <%= w.text_field :weight, class: "form-control" %><br>
-						<%= w.label :time %>: <%= w.text_field :time, class: "form-control" %><br>
-						<%= w.label :distance %>: <%= w.text_field :distance, class: "form-control" %></p>
+						<table class="table">
+							<tr>
+								<td><%= w.label :exercise %></td>
+								<td><%= w.collection_select :exercise_id, Exercise.all, :id, :name, {prompt: "Select a exercise"}, {class: "form-control"}  %></td>
+							</tr>
+							<tr>
+								<td><%= w.label :rep %></td>
+								<td><%= w.text_field :rep, class: "form-control" %></td>
+							</tr>
+							<tr>
+								<td><%= w.label :weight %></td>
+								<td><%= w.text_field :weight, class: "form-control" %></td>
+							</tr>
+							<tr>
+								<td><%= w.label :time %></td>
+								<td><%= w.text_field :time, class: "form-control" %></td>
+							</tr>
+							<tr>
+								<td><%= w.label :distance %></td>
+								<td><%= w.text_field :distance, class: "form-control" %></td>
+							</tr>
+						</table>
+  						<p><%= w.link_to_remove "Remove this task" %></p>
 
 					<% end %>
 				</div>
 
 			</div>
 
+			<p><%= f.link_to_add "Add a task", :wo_sets %></p>
 
 			<p><%= f.submit :submit, class: "btn btn-primary" %></p>
 

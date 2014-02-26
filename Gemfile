@@ -25,3 +25,4 @@ end
 
 gem 'devise'
 gem 'newrelic_rpm'
+gem "nested_form"

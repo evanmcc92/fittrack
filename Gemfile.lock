@@ -58,6 +58,7 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.8.4)
+    nested_form (0.3.2)
     newrelic_rpm (3.6.7.159)
     orm_adapter (0.5.0)
     pg (0.17.0)
@@ -128,6 +129,7 @@ DEPENDENCIES
   devise
   jbuilder (= 1.0.2)
   jquery-rails (= 3.0.4)
+  nested_form
   newrelic_rpm
   pg
   rails (= 4.0.2)
