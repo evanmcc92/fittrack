@@ -38,16 +38,16 @@
 								<td><%= w.text_field :distance, class: "form-control" %></td>
 							</tr>
 						</table>
-  						<p><%= w.link_to_remove "Remove this task" %></p>
+  						<p><%= w.link_to_remove "Remove This Set" %></p>
 
 					<% end %>
 				</div>
 
 			</div>
 
-			<p><%= f.link_to_add "Add a task", :wo_sets %></p>
+			<p><%= f.link_to_add "Add a Set", :wo_sets %></p>
 
-			<p><%= f.submit :submit, class: "btn btn-primary" %></p>
+			<p><%= f.submit "Publish Workout", class: "btn btn-primary" %></p>
 
 		<% end %>
 	</div>
