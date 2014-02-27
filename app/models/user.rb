@@ -14,6 +14,11 @@ class User < ActiveRecord::Base
                                    dependent:   :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
 
+
+
+  validates :bio, length: { maximum: 255 }
+
+
   #search
 	def self.search(query)
       where("name like ? ", "%#{query}%")
@@ -25,6 +30,7 @@ class User < ActiveRecord::Base
       #Workout.from_users_followed_by(self)
   end
 
+  #following
   def following?(other_user)
     relationships.find_by(followed_id: other_user.id)
   end

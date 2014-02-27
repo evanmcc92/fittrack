@@ -32,7 +32,8 @@
   <%= f.email_field :email, class: "form-control" %></p>
 
   <p><%= f.label :bio %><br />
-  <%= f.text_area :bio, class: "form-control" %></p>
+  <%= f.text_area :bio, class: "form-control message" %>
+    You have <B><SPAN class="countdown">140</SPAN></B> characters remaining.</p>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
@@ -57,11 +58,22 @@
 
 
 <script>
-  $(function() {
-    $( "#datepicker" ).datepicker({
-      changeMonth: true,
-      changeYear: true,
-      minDate: new Date(1900, 1, 1)
-    });
+$(function() {
+  $( "#datepicker" ).datepicker({
+    changeMonth: true,
+    changeYear: true,
+    minDate: new Date(1900, 1, 1)
   });
-  </script>
+});
+
+function updateCountdown() {
+    var remaining = 255 - jQuery('.message').val().length;
+    jQuery('.countdown').text(remaining);
+}
+
+$(document).ready(function($) {
+    updateCountdown();
+    $('.message').change(updateCountdown);
+    $('.message').keyup(updateCountdown);
+});
+</script>
