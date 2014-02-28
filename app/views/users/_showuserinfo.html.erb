@@ -30,7 +30,7 @@
 	<% end %>
 
 	<% if @user.age != "" %>
-		<p>Birthday: <%= @user.age %></p>
+		<p>Birthday: <%= time_ago_in_words(@user.age) %></p>
 	<% end %>
 
 	<% if @user == current_user %>

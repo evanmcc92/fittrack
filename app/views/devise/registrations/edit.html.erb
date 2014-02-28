@@ -1,4 +1,8 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-1"></div>
+  <div class="col-md-8">
+  <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
@@ -23,10 +27,20 @@
   U.S.: <%= f.radio_button(:measurement_system, "US") %>&nbsp;&nbsp;Metric: <%= f.radio_button(:measurement_system, "Metric") %></p>
 
   <p><%= f.label :height %><br />
-  <%= f.text_field :height, class: "form-control" %></p>
+  <% if current_user.measurement_system == "US" %>
+    <%= f.select :height, ((4..7).to_a.collect{|o| 0.upto(11).to_a.collect{|k| ["#{o.to_s+'\'' + k.to_s}",o.to_s + k.to_s]}}.flatten(1)),  {prompt: "Whats Your Height?"}, class: "form-control" %>
+  <% else %>
+    <%= f.select :height, ((0..500).map {|i| [i,i] }),  {prompt: "Whats Your Height?"},class: "form-control" %>
+  <% end %>
+</p>
 
   <p><%= f.label :weight %><br>
-  <%= f.text_field :weight, class: "form-control" %></p>
+  <div class="input-group"><%= f.text_field :weight, class: "form-control" %>
+  <% if current_user.measurement_system == "US" %>
+    <span class="input-group-addon">lbs</span>
+  <% else %>
+    <span class="input-group-addon">kgs</span>
+  <% end %></div></p>
 
   <p><%= f.label :email %><br />
   <%= f.email_field :email, class: "form-control" %></p>
@@ -53,9 +67,13 @@
 
 <h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "btn btn-danger" %></p>\
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "btn btn-danger" %></p>
 
 
+</div>
+  <div class="col-md-1"></div>
+  <div class="col-md-1"></div>
+</div>
 
 <script>
 $(function() {

@@ -6,7 +6,7 @@
 	
 	<p>Gender: <%= current_user.gender%></p>
 	
-	<p>Height: <%= current_user.height%>
+	<p>Height: <%= current_user.height %>
 		<% if current_user.weight != "" %>
 			<% if current_user.measurement_system == "US" %> inches
 			<% else %> cm
@@ -23,7 +23,7 @@
 
 	<p>Bio: <%= current_user.bio%></p>
 	
-	<p>Age: <% if current_user.age %><%= distance_of_time_in_words(Time.now ,current_user.age) %><% end %></p>
+	<p>Age: <% if current_user.age %><%= time_ago_in_words(current_user.age) %><% end %></p>
 	
 	<% if current_user.admin %>
 		<p>Admin: True</p>
