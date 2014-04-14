@@ -17,11 +17,19 @@
 <body>
 
 <%= render "shared/header" %>
+
 <div id="body">
+
 	<p class="notice"><%= notice %></p>
+  
 	<p class="alert"><%= alert %></p>
+
 	<%= yield %>
-<%= render "goals/goalform" %>
+
+  <% if signed_in? %>
+    <%= render "goals/goalform" %>
+  <% end %>
+
 </div>
 
 </body>

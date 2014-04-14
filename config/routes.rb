@@ -1,17 +1,20 @@
 Fittrack::Application.routes.draw do
 
-  get "feeds/create"
-  get "feeds/destroy"
   resources :workouts
-  resources :exercises
+  resources :exercises do
+    collection { post :import }
+  end
 
   root "static_page#index"
+
   devise_for :users
+  
   resources :users do
     member do
       get :following, :followers
     end
   end
+  
   resources :relationships, only: [:create, :destroy]
   resources :goals
   resources :posts, only: [:create, :destroy]

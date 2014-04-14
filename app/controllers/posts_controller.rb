@@ -3,7 +3,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
 
     if @post.save
-      redirect_to :back
+      redirect_to root_url
     else
       redirect_to root_url
     end

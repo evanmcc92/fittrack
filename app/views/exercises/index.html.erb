@@ -11,6 +11,11 @@
 		<h3><%= link_to "+ Exercise", new_exercise_path %></h3>
 
 
+<%= form_tag import_exercises_path, multipart: true do %>
+  	<p><%= file_field_tag :file %></p>
+  	<p><%= submit_tag "Import", class: "btn btn-primary" %></p>
+<% end %>
+
 		<table class="table table-hover table-bordered">
 		<col span="1" style="width: 15%;">
 		<col span="2" style="width: 75%;">

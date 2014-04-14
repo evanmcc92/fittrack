@@ -1,4 +1,5 @@
 class ExercisesController < ApplicationController
+
   def create
   	@exercise = current_user.exercises.create(exercise_params)
 
@@ -45,6 +46,11 @@ class ExercisesController < ApplicationController
   def index
   	@exercises = Exercise.all
     @post = current_user.posts.build
+  end
+
+  def import
+    Exercise.import(params[:file], params[:user_id])
+    redirect_to :back, notice: "Exercises imported."
   end
 
   private
