@@ -34,11 +34,11 @@ class ExercisesController < ApplicationController
 
     if @exercise.update_attributes(exercise_params)
       #if task saves
-      flash[:success] = "exercise Updated"
-      redirect_to :back
+      flash[:success] = "Exercise Updated"
+      redirect_to exercises_path
     else
       #if task doesnt save
-      flash[:error] = "exercise not Updated"
+      flash[:error] = "Exercise not Updated"
       redirect_to root_path
     end
   end

@@ -8,8 +8,8 @@
 			<div class="modal-body">
 				<%= form_for Goal.new do |f| %>
 
-					<p><%= f.label :exercise %><br>
-    				<%= f.collection_select :exercise_id, Exercise.all, :id, :name, {prompt: "Select a exercise"}, {class: "form-control"}  %></p>
+					<p><%= f.label :exercise %><br><%= f.collection_select :exercise_id, Exercise.all, :id, :name, {prompt: "Select a exercise"}, {class: "form-control"}  %>
+    				</p>
     				<p>&nbsp;</p>
 					<h4>If Applicable</h4>
 					<p><%= f.label :weight %><br>
