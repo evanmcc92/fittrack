@@ -1,11 +1,12 @@
 Fittrack::Application.routes.draw do
+  
+  root "static_page#index"
 
   resources :workouts
   resources :exercises do
     collection { post :import }
   end
 
-  root "static_page#index"
 
   devise_for :users
   

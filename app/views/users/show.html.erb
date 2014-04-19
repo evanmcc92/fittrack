@@ -1,10 +1,6 @@
 <div class="row">
 	<div class="col-md-4">
-		<% if @user == current_user %>
-			<%= render "users/userinfo" %>
-		<% else %>
 			<%= render "users/showuserinfo" %>
-		<% end %>
 
 		<%= render "posts/post_form" %>
 		<%= render "goals/goalviewshow" %>

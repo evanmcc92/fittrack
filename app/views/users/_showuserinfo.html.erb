@@ -29,7 +29,7 @@
 		<p>Bio: <%= @user.bio %></p>
 	<% end %>
 
-	<% if @user.age != "" %>
+	<% if @user.age == "" %>
 		<p>Birthday: <%= time_ago_in_words(@user.age) %></p>
 	<% end %>
 
