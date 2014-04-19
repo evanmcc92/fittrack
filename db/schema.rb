@@ -26,15 +26,14 @@ ActiveRecord::Schema.define(version: 20140419040116) do
   add_index "exercises", ["user_id"], name: "index_exercises_on_user_id"
 
   create_table "feed_items", force: true do |t|
-    t.integer  "type_id_id"
+    t.string   "type_id"
     t.string   "type_name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id_id"
+    t.integer  "user_id"
   end
 
-  add_index "feed_items", ["type_id_id"], name: "index_feed_items_on_type_id_id"
-  add_index "feed_items", ["user_id_id"], name: "index_feed_items_on_user_id_id"
+  add_index "feed_items", ["user_id"], name: "index_feed_items_on_user_id"
 
   create_table "goals", force: true do |t|
     t.integer  "exercise_id"

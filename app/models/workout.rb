@@ -1,6 +1,7 @@
 class Workout < ActiveRecord::Base
   belongs_to :user
   has_many :wo_sets
+  has_many :feed_items
 
   accepts_nested_attributes_for :wo_sets
 

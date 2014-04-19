@@ -9,10 +9,10 @@
   <h1><%= @user.name %>'s <%= @title %></h1>
     <% if @users.any? %>
       <% @users.each do |f| %>
-        <p><%= link_to f.name, user_path(f) %></p>
-        <p><%= link_to f.username %></p>
+        <p><big><%= link_to f.name, user_path(f) %></big><br>
+        <%= link_to f.username %><br>
         <% if f.bio %>
-          <small><%= f.bio %></small>
+          <small><%= f.bio %></small></p>
         <% end %>
         <p><%= link_to "#{f.followers.count} Followers", followers_user_path(f) %> | <%= link_to "#{f.followed_users.count} Followers", following_user_path(f) %></p>
       <% end %>
