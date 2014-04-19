@@ -3,7 +3,7 @@
 		Posted <%= time_ago_in_words(post.created_at) %> ago.
 	</div>
 	<div class="panel-body">
-		<%= post.content %>
+		<%= auto_link(post.content).html_safe %>
 	</div>
   		<% if current_user == post.user %>
   	<div class="panel-footer">

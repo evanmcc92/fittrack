@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
     
+  include Twitter::Autolink
 
 
   belongs_to :user

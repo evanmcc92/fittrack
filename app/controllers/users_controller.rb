@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-  	@user = User.find(params[:id])
+  	@user = User.find_by_username(params[:id])
     @post = current_user.posts.build
     @posts = @user.posts
     @workouts = @user.workouts
@@ -17,18 +17,20 @@ class UsersController < ApplicationController
   def following
     @title = "Following"
 
-    @user = User.find(params[:id])
+    @user = User.find_by_username(params[:id])
     @users = @user.followed_users
 
     render 'show_follow'
 
     @post = current_user.posts.build
-    @posts = @user.posts
+    if @user.posts. any?
+      @posts = @user.posts
+    end
   end
 
   def followers
     @title = "Followers"
-    @user = User.find(params[:id])
+    @user = User.find_by_username(params[:id])
     @users = @user.followers
 
     render 'show_follow'

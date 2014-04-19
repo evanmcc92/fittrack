@@ -29,4 +29,6 @@ gem "nested_form"
 gem 'roo'
 
 #twitter text with fittrack updates
-gem 'twitter-text-rb-evanmcc92', :git => 'git://github.com/evanmcc92/twitter-text-rb-evanmcc92'
+gem 'twitter-text', :git => 'git://github.com/evanmcc92/twitter-text-rb-evanmcc92'
+
+

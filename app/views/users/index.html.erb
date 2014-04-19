@@ -11,7 +11,8 @@
 				<% if @user.try(:any?) %>
 					<% for user in @user %>
 			    		<li>
-				    		<%= link_to user.name, user_path(user) %>
+				    		<%= link_to user.username, user_path(user) %><br>
+				    		<%= user.name %>
 			    		</li>
 			    	<% end %>
 				<% else %>

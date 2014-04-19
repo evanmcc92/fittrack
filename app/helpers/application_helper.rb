@@ -1,4 +1,6 @@
 module ApplicationHelper
+	
+  include Twitter::Autolink
 
 	def devise_mapping
 	  Devise.mappings[:user]
@@ -11,5 +13,6 @@ module ApplicationHelper
 	def resource_class
 	  devise_mapping.to
 	end
+	
 
 end
