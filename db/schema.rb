@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140419035255) do
+ActiveRecord::Schema.define(version: 20140419035939) do
 
   create_table "exercises", force: true do |t|
     t.string   "name"
@@ -90,12 +90,10 @@ ActiveRecord::Schema.define(version: 20140419035255) do
     t.boolean  "admin",                  default: false
     t.string   "measurement_system"
     t.string   "username"
-    t.integer  "user_id_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["user_id_id"], name: "index_users_on_user_id_id"
 
   create_table "wo_sets", force: true do |t|
     t.integer  "workout_id"
