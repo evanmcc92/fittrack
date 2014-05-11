@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140419040116) do
+ActiveRecord::Schema.define(version: 20140419134757) do
 
   create_table "exercises", force: true do |t|
     t.string   "name"
@@ -25,15 +25,18 @@ ActiveRecord::Schema.define(version: 20140419040116) do
 
   add_index "exercises", ["user_id"], name: "index_exercises_on_user_id"
 
-  create_table "feed_items", force: true do |t|
-    t.string   "type_id"
-    t.string   "type_name"
+  create_table "feeds", force: true do |t|
+    t.string   "model_name"
+    t.integer  "model_id"
+    t.integer  "user_id"
+    t.integer  "wo_set_id"
+    t.string   "content"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
   end
 
-  add_index "feed_items", ["user_id"], name: "index_feed_items_on_user_id"
+  add_index "feeds", ["user_id"], name: "index_feeds_on_user_id"
+  add_index "feeds", ["wo_set_id"], name: "index_feeds_on_wo_set_id"
 
   create_table "goals", force: true do |t|
     t.integer  "exercise_id"

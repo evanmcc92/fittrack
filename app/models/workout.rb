@@ -1,15 +1,24 @@
 class Workout < ActiveRecord::Base
   belongs_to :user
   has_many :wo_sets
-  has_many :feed_items
+  has_many :feeds
+
+  after_create :create_feed
 
   accepts_nested_attributes_for :wo_sets
 
   default_scope -> { order('created_at DESC') }
 
-  def self.from_users_followed_by(user)
-    followed_user_ids = "SELECT followed_id FROM relationships WHERE follower_id = :user_id"
-    where("user_id IN (#{followed_user_ids}) OR user_id = :user_id", user_id: user.id)
+
+  private
+
+  def create_feed
+    Feed.create(
+      model_id: self.id,
+      model_name: "workout",
+      user_id: self.user_id,
+      wo_set_id: wo_set_id
+    )
   end
   
 end

@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
   has_many :exercises
-  has_many :feed_items
   has_many :goals
   has_many :workouts
   has_many :posts, dependent: :destroy
@@ -13,6 +12,7 @@ class User < ActiveRecord::Base
   has_many :followed_users, through: :relationships, source: :followed
   has_many :reverse_relationships, foreign_key: "followed_id", class_name:  "Relationship", dependent: :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
+  has_many :feeds
 
   def to_param
     username
@@ -26,11 +26,17 @@ class User < ActiveRecord::Base
       where("name like ? ", "%#{query}%") && where("username like ? ", "%#{query}%")
 	end
 
+  #feed work
 	def feed
     	# This is preliminary. See "Following users" for the full implementation.
-      Post.from_users_followed_by(self)
-      #Workout.from_users_followed_by(self)
+      #((Post.from_users_followed_by(self)) + (Workout.from_users_followed_by(self))).sort_by {|a| a.created_at}.reverse
+      Feed.from_users_followed_by(self).order('created_at DESC')
   end
+
+
+  # def recent_feeds
+  #   feeds.order('created_at DESC')
+  # end
 
   #following
   def following?(other_user)

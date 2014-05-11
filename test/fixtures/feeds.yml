@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  type_id_id: 
-  type_name: MyString
+  model_name: MyString
+  item_id: 1
+  user_id: 
 
 two:
-  type_id_id: 
-  type_name: MyString
+  model_name: MyString
+  item_id: 1
+  user_id: 

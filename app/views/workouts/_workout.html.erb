@@ -3,38 +3,36 @@
 		Done <%= time_ago_in_words(workout.created_at) %> ago.
 	</div>
 	<div class="panel-body">
-		<p>Workout id: <%= workout.id %><br>
-		Date done: <%= workout.created_at.strftime '%m/%d/%Y' %></p>
+		<p>Date done: <%= workout.created_at.strftime '%m/%d/%Y' %></p>
 
 		<% workout.wo_sets.each do |wo_set| %>
 			<table class="table table-bordered table-condensed">
-
-			<% if wo_set.rep != "" %>
-				<tr>
-					<th colspan="2"><%= Exercise.find(wo_set.exercise_id).name %></th>
-				<tr>
-					<td>Reps</td>
-					<td><%= wo_set.rep %></td>
-				</tr>
-			<% end %>
-			<% if wo_set.weight != "" %>
-				<tr>
-					<td>Weight</td>
-					<td><%= wo_set.weight %></td>
-				</tr>
-			<% end %>
-			<% if wo_set.distance != "" %>
-				<tr>
-					<td>Distance</td>
-					<td><%= wo_set.distance %></td>
-				</tr>
-			<% end %>
-			<% if wo_set.time != "" %>
-				<tr>
-					<td>Time</td>
-					<td><%= wo_set.time %></td>
-				</tr>
-			<% end %>
+				<% if wo_set.rep != "" %>
+					<tr>
+						<th colspan="2"><%= Exercise.find(wo_set.exercise_id).name %></th>
+					<tr>
+						<td>Reps</td>
+						<td><%= wo_set.rep %></td>
+					</tr>
+				<% end %>
+				<% if wo_set.weight != "" %>
+					<tr>
+						<td>Weight</td>
+						<td><%= wo_set.weight %></td>
+					</tr>
+				<% end %>
+				<% if wo_set.distance != "" %>
+					<tr>
+						<td>Distance</td>
+						<td><%= wo_set.distance %></td>
+					</tr>
+				<% end %>
+				<% if wo_set.time != "" %>
+					<tr>
+						<td>Time</td>
+						<td><%= wo_set.time %></td>
+					</tr>
+				<% end %>
 			</table>
 		<% end %>
 	</div>
