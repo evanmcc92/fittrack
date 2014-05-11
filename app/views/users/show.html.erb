@@ -7,8 +7,8 @@
 	</div>
 	<div class="col-md-8">
 		<h1><%= @user.username %></h1>
-		<% if @user.posts.any? %>
-			<%= render @posts %>
+		<% if @user.feed.any? %>
+			<%= render 'shared/feed' %>
 		<% else %>
 			<p>I'm not very social</p>
 		<% end %>

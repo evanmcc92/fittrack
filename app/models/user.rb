@@ -34,9 +34,9 @@ class User < ActiveRecord::Base
   end
 
 
-  # def recent_feeds
-  #   feeds.order('created_at DESC')
-  # end
+  def recent_feeds
+    feeds.order('created_at DESC')
+  end
 
   #following
   def following?(other_user)

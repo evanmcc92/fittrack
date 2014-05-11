@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   def show
   	@user = User.find_by_username(params[:id])
     @post = current_user.posts.build
-    @posts = @user.posts
+    @feed_items = @user.recent_feeds
+    @workout = Workout.find_by(params[:model_id])
     @workouts = @user.workouts
   end
 
