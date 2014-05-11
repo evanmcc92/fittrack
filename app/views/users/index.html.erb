@@ -7,18 +7,47 @@
 		</div>
 		<div class="col-md-8">
 			<h1>Search results for "<%= params[:search] %>"</h1>
-			<ul>
 				<% if @user.try(:any?) %>
 					<% for user in @user %>
-			    		<li>
-				    		<%= link_to user.username, user_path(user) %><br>
-				    		<%= user.name %>
-			    		</li>
+			    		<div class="well  well-sm">
+
+
+					        <% unless current_user == user %>
+					          <div id="follow_form_showfollow">
+					            <% if current_user.following?(user) %>
+
+					              <!-- unfollow form -->
+					              <%= form_for(current_user.relationships.find_by(followed_id: user.id), html: { method: :delete }) do |f| %>
+					                <%= f.submit "Unfollow", class: "btn btn-large" %>
+					              <% end %>
+					            
+					            <% else %>
+
+					              <!-- follow form -->
+					              <%= form_for(current_user.relationships.build(followed_id: user.id)) do |f| %>
+					                <%= f.hidden_field :followed_id %>
+					                <%= f.submit "Follow", class: "btn btn-large btn-primary" %>
+					              <% end %>
+
+					            <% end %>
+					          </div>
+					        <% end %>
+
+
+					          <p><big><%= link_to user.name, user_path(user) %></big> @<%= user.username %><br>
+					          <% if user.bio %>
+					            <small><%= user.bio %></small></p>
+					          <% end %>
+					          <p>
+					            <%= link_to "#{user.followers.count} Followers", followers_user_path(user) %> | 
+					            <%= link_to "#{user.followed_users.count} Followers", following_user_path(user) %>
+					          </p>
+
+					        </div>
 			    	<% end %>
 				<% else %>
 					<li>Sorry! No results, try again.</li>
 		    	<% end %>
-	    	</ul>
 		</div>
 	</div>
 
