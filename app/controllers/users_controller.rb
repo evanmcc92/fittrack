@@ -4,7 +4,6 @@ class UsersController < ApplicationController
     @post = current_user.posts.build
     @feed_items = @user.recent_feeds
     @workout = Workout.find_by(params[:model_id])
-    @workouts = @user.workouts
   end
 
   def index

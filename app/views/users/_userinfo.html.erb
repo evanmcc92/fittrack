@@ -3,8 +3,10 @@
 	<h3><%= current_user.username %></h3>
 	
 	<p><strong><%= current_user.name%></strong></p>
-        <p><a href="<%= following_user_path(current_user) %>"> <%= current_user.followed_users.count %> Following</a> |
-  <a href="<%= followers_user_path(current_user) %>"><%= current_user.followers.count %> Followers</a></p>
+        <p>
+	        <a href="<%= following_user_path(current_user) %>"> <%= current_user.followed_users.count %> Following</a> |
+			<a href="<%= followers_user_path(current_user) %>"><%= current_user.followers.count %> Followers</a>
+		</p>
 	
 	<p>Gender: <%= current_user.gender%></p>
 	

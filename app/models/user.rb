@@ -28,11 +28,8 @@ class User < ActiveRecord::Base
 
   #feed work
 	def feed
-    	# This is preliminary. See "Following users" for the full implementation.
-      #((Post.from_users_followed_by(self)) + (Workout.from_users_followed_by(self))).sort_by {|a| a.created_at}.reverse
       Feed.from_users_followed_by(self).order('created_at DESC')
   end
-
 
   def recent_feeds
     feeds.order('created_at DESC')
