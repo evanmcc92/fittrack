@@ -20,9 +20,9 @@
 		<col span="1" style="width: 15%;">
 		<col span="2" style="width: 75%;">
 			<tr>
-				<th>Name</th>
-				<th>Description</th>
-				<th>Category</th>
+				<th><%= sortable "name" %></th>
+				<th><%= sortable "description" %></th>
+				<th><%= sortable "category" %></th>
 				<th>Options</th>
 			</tr>
 				<% @exercises.each do |exercise| %>

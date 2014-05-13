@@ -43,8 +43,9 @@ class ExercisesController < ApplicationController
     end
   end
 
+  helper_method :sortcolumn, :sortdirection
   def index
-  	@exercises = Exercise.all
+  	@exercises = Exercise.order(sortcolumn + " " + sortdirection)
     @post = current_user.posts.build
   end
 
@@ -58,4 +59,13 @@ class ExercisesController < ApplicationController
   	def exercise_params
   		params.require(:exercise).permit(:name, :description, :category)
   	end
+
+    def sortcolumn
+      Exercise.column_names.include?(params[:sort]) ? params[:sort] : "name"
+    end
+
+    def sortdirection
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
+
 end
