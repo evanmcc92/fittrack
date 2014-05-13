@@ -11,6 +11,8 @@ Fittrack::Application.routes.draw do
   devise_for :users
   
   resources :users do
+    get :autocomplete_user_username, :on => :collection
+
     member do
       get :following, :followers
     end

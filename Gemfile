@@ -31,4 +31,6 @@ gem 'roo'
 #twitter text with fittrack updates
 gem 'twitter-text', :git => 'git://github.com/evanmcc92/twitter-text-rb-evanmcc92'
 
-
+gem 'will_paginate', '~> 3.0.5'
+gem 'rails4-autocomplete'
+gem "jquery-ui-rails"

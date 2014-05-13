@@ -9,6 +9,7 @@
 		<h1><%= @user.username %></h1>
 		<% if @user.feed.any? %>
 			<%= render 'shared/feed' %>
+			<%= will_paginate @feed_items %>
 		<% else %>
 			<p>I'm not very social</p>
 		<% end %>

@@ -16,7 +16,7 @@
 
         <li>
           <%= form_tag(users_path, :method => 'get', :class => "navbar-form") do %>
-              <%= text_field_tag :search, params[:search], :class => "input-small appendedInputButton form-control", :placeholder => "Search for friends" %>
+              <%= autocomplete_field_tag :search, params[:search], autocomplete_user_username_users_path, :class => "input-small appendedInputButton form-control", :placeholder => "Search for friends" %>
           <% end %>
         </li>
         <li class="dropdown">

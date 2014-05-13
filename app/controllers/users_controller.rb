@@ -1,14 +1,15 @@
 class UsersController < ApplicationController
+  autocomplete :user, :username
   def show
   	@user = User.find_by_username(params[:id])
     @post = current_user.posts.build
-    @feed_items = @user.recent_feeds
+    @feed_items = @user.recent_feeds.paginate(:page => params[:page])
     @workout = Workout.find_by(params[:model_id])
   end
 
   def index
   	if params[:search]
-      @user = User.search(params[:search])
+      @user = User.search(params[:search]).paginate(:page => params[:page])
     else
       @users = User.all
     end
@@ -18,7 +19,7 @@ class UsersController < ApplicationController
     @title = "Following"
 
     @user = User.find_by_username(params[:id])
-    @users = @user.followed_users
+    @users = @user.followed_users.paginate(:page => params[:page])
 
     render 'show_follow'
 
@@ -31,7 +32,7 @@ class UsersController < ApplicationController
   def followers
     @title = "Followers"
     @user = User.find_by_username(params[:id])
-    @users = @user.followers
+    @users = @user.followers.paginate(:page => params[:page])
 
     render 'show_follow'
     

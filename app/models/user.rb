@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
 
   validates :bio, length: { maximum: 255 }
 
+  #pagination
+  self.per_page = 15
 
   #search
 	def self.search(query)
