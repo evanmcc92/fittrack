@@ -7,7 +7,6 @@ Fittrack::Application.routes.draw do
     collection { post :import }
   end
 
-
   devise_for :users
   
   resources :users do
