@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
+  
   autocomplete :user, :username
+
   def show
   	@user = User.find_by_username(params[:id])
     @post = current_user.posts.build

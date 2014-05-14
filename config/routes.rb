@@ -1,5 +1,6 @@
 Fittrack::Application.routes.draw do
   
+  
   root "static_page#index"
 
   resources :workouts
@@ -21,6 +22,10 @@ Fittrack::Application.routes.draw do
   resources :goals
   resources :posts, only: [:create, :destroy]
 
+
+  #for likeable gem
+  delete  'likes/:resource_name/:resource_id' => "likes#destroy", :as => 'unlike'
+  post    'likes/:resource_name/:resource_id' => "likes#create",  :as => 'like'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

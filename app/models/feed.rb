@@ -1,4 +1,6 @@
 class Feed < ActiveRecord::Base
+  include Likeable
+  
   belongs_to :user
   belongs_to :post
   belongs_to :workout

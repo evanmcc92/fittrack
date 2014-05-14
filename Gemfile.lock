@@ -60,6 +60,12 @@ GEM
     jquery-ui-rails (4.2.0)
       railties (>= 3.2.16)
     json (1.8.1)
+    keytar (1.5.3)
+      activesupport
+    likeable (0.1.2)
+      activesupport
+      keytar (>= 1.5.2)
+      redis
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -100,6 +106,7 @@ GEM
     rake (10.3.1)
     rdoc (3.12.2)
       json (~> 1.4)
+    redis (3.0.7)
     roo (1.13.2)
       nokogiri
       rubyzip
@@ -154,6 +161,7 @@ DEPENDENCIES
   jbuilder (= 1.0.2)
   jquery-rails (= 3.0.4)
   jquery-ui-rails
+  likeable
   nested_form
   newrelic_rpm
   pg

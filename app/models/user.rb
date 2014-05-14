@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include Likeable::UserMethods
   include Twitter::Autolink
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
