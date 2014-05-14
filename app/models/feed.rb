@@ -1,6 +1,6 @@
 class Feed < ActiveRecord::Base
   include Likeable
-  
+
   belongs_to :user
   belongs_to :post
   belongs_to :workout
@@ -10,7 +10,7 @@ class Feed < ActiveRecord::Base
 
   self.per_page = 15
 
-  	def self.from_users_followed_by(user)
+  def self.from_users_followed_by(user)
 	  followed_user_ids = "SELECT followed_id FROM relationships WHERE follower_id = :user_id"
 	  where("user_id IN (#{followed_user_ids}) OR user_id = :user_id", user_id: user.id)
 	end

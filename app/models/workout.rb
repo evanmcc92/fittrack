@@ -9,6 +9,10 @@ class Workout < ActiveRecord::Base
 
   default_scope -> { order('created_at DESC') }
 
+  def recent_feeds
+    feeds.order('created_at DESC')
+  end
+
 
   private
 

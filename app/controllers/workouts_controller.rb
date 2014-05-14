@@ -1,7 +1,8 @@
 class WorkoutsController < ApplicationController
   def index
-    @workouts = current_user.workouts.all
+    @feed_items = current_user.recent_feeds.paginate(:page => params[:page])
     @post = current_user.posts.build
+    @workout = Workout.find_by(params[:model_id])
   end
 
   def show

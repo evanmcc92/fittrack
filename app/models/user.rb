@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
 
   #feed work
 	def feed
-      Feed.from_users_followed_by(self).order('created_at DESC')
+    Feed.from_users_followed_by(self).order('created_at DESC')
   end
 
   def recent_feeds
