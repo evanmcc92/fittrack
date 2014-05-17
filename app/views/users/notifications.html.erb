@@ -1,0 +1,28 @@
+<% if current_user %>
+
+	<div class="row">
+		<div class="col-md-4">
+			<%= render "users/userinfo" %>
+			<%= render "goals/goalviewindex" %>
+		</div>
+		<div class="col-md-8">
+			<h1>Notifications</h1>
+				<% if @activites.try(:any?) %>
+					<%= render_activities(@activities, locals: {friends: current_user.followers}) %>
+				<% else %>
+					<li>Sorry! No notifications yet</li>
+		    	<% end %>
+		</div>
+	</div>
+
+<% else %>
+
+	<div class="row">
+		<div class="col-md-4">
+		</div>
+		<div id="index-col-md-8" class="col-md-8">
+			<h1><%= "Wrong turn... Go Back Here", root_path %></h1>
+		</div>
+	</div>
+
+<% end %>
