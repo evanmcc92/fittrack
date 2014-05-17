@@ -18,13 +18,13 @@
 					<% if @user == current_user %>
 					<% if goal.complete == false %>
 						<%= form_for goal do |f| %>
-									<%= f.hidden_field :complete, :value => true %>
-									<%= f.submit "Complete", class: "btn btn-default btn-sm" %>
+							<%= f.hidden_field :complete, :value => true %>
+							<%= f.submit "Complete", class: "btn btn-default btn-sm" %>
 						<% end %>
 					<% else %>
 						<%= form_for goal do |f| %>
-									<%= f.hidden_field :complete, :value => false %>
-									<%= f.submit "Incomplete", class: "btn btn-default btn-sm" %>
+							<%= f.hidden_field :complete, :value => false %>
+							<%= f.submit "Incomplete", class: "btn btn-default btn-sm" %>
 						<% end %>
 					<% end %>
 					<% else %>
@@ -33,7 +33,7 @@
 				</td>
 				<% if @user == current_user %>
 					<td><%= link_to "", goal_path(goal), :method => :delete, class: "glyphicon glyphicon-trash" %>&nbsp;
-					<%= link_to '', edit_goal_path(goal), class: "glyphicon glyphicon-edit" %>
+						<%= link_to '', edit_goal_path(goal), class: "glyphicon glyphicon-edit" %>
 					</td>		
 				<% end %>
 			</tr>
@@ -42,6 +42,5 @@
 	<% end %>
 	<% if @user == current_user %>
 		<a href="#createexercise" data-toggle="modal" >Create a new goal</a>
-		
 	<% end %>
 </div>

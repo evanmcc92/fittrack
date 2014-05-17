@@ -33,7 +33,9 @@
 }
 
 @media (max-width: 992px) {
-  #user-info {
+  .user-show {
     display: none;
+  }
+  #user-info {
   }
 }

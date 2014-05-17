@@ -20,17 +20,17 @@
   <% end -%>
   
   <p><%= f.label :gender %><br />
-  <%= f.select(:gender, [["Male"], ["Female"]], {},{class: "form-control"})  %></p>
+  <%= f.select(:gender, [["Male"], ["Female"]], {},{class: "form-control"}) %></p>
 
-  <p><%= f.label :Birthday %><br />
-  <%= f.text_field :age, :value => resource.age.try(:strftime, 'Y-%d-%m %H:%M'), id: "datepicker", class: "form-control" %></p>
+  <p><%= f.label "Birthday (dd/mm/yyyy)" %><br />
+  <%= f.text_field :age, :value => resource.age.try(:strftime, '%d-%m-%Y'), id: "datepicker", class: "form-control" %></p>
 
   <p><%= f.label :measurement_system %><br />
   <%= f.select(:measurement_system, [["US"], ["Metric"]],{}, {class: "form-control"}) %></p>
 
   <p><%= f.label :height %><br />
   <% if current_user.measurement_system == "US" %>
-    <%= f.select :height, ((4..7).to_a.collect{|o| 0.upto(11).to_a.collect{|k| ["#{o.to_s+'\'' + k.to_s}",o.to_s + k.to_s]}}.flatten(1)),  {prompt: "Whats Your Height?"}, class: "form-control" %>
+    <%= f.select :height, ((0..500).map {|i| [i,i] }),  {prompt: "Whats Your Height?"},class: "form-control" %>
   <% else %>
     <%= f.select :height, ((0..500).map {|i| [i,i] }),  {prompt: "Whats Your Height?"},class: "form-control" %>
   <% end %>

@@ -15,11 +15,29 @@
 <% else %>
 
 	<div class="row">
-		<div id="index-col-md-8" class="col-md-8">
-			<h1>StaticPage#index</h1>
-			<p>Find me in app/views/static_page/index.html.erb</p>
+		<div class="jumbotron">
+			<h1>Name of App</h1>
+			<p>Logo</p>
+			<p>basic stuff</p>
 		</div>
-		<div class="col-md-4"><%= render "devise/sessions/loginform" %></div>
+		
+		<div class="col-md-4">
+			<%= render "devise/sessions/loginform" %>
+		</div>
+		<div class="col-md-4">
+			<h2>Be Social</h2>
+			<p>Find your friends</p>
+			<p>Meet some cool new people</p>
+			<p>&nbsp;</p>
+		</div>
+		<div class="col-md-4">
+			<h2>Track Progress</h2>
+			<p>Work out a lot? Track your progress here</p>
+			<p>We have a huge list of exercises to pick from*</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<small>*Exercise list is a combination of exercises from <a href="http://bodybuilding.com/" target="_blank">BodyBuilding.com</a> and our inhouse staff</small>
+		</div>
 	</div>
 
 <% end %>

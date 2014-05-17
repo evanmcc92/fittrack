@@ -1,10 +1,6 @@
-<div id="user-info">
+<div id="user-info" class="user-show">
 	<h4>Post something</h4>
-	<%= form_for @post do |f| %>
-		<p><%= f.text_area :content, placeholder: "Compose new post...", class: "form-control message" %></p>
-		<p>You have <B><SPAN class="countdown">140</SPAN></B> characters remaining.</p>
-		<p><%= f.submit "Post", class: "btn btn-large btn-primary" %></p>
-	<% end %>
+	<%= render "posts/form" %>
 </div>
 <script>
 function updateCountdown() {

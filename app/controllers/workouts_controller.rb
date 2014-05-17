@@ -33,8 +33,10 @@ class WorkoutsController < ApplicationController
   end
 
   def destroy
-    @workout = Workout.find(params[:id])
+    @workout = Workout.find_by(params[:model_id])
+    @feed_item = Feed.find(params[:id])
     @workout.destroy
+    @feed_item.destroy
 
     redirect_to workouts_path
   end

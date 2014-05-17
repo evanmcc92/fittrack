@@ -7,43 +7,44 @@
   </div>
   <div class="col-md-8">
     <h1><%= @user.name %>'s <%= @title %></h1>
-      <% @users.each do |f| %>
-        <div class="well  well-sm">
+      <% if @users.any? %>
+        <% @users.each do |f| %>
+          <div class="well well-sm">
+          <% unless current_user == f %>
+            <div id="follow_form_showfollow">
+              <% if current_user.following?(f) %>
 
+                <!-- unfollow form -->
+                <%= form_for(current_user.relationships.find_by(followed_id: f.id), html: { method: :delete }) do |f| %>
+                  <%= f.submit "Unfollow", class: "btn btn-large" %>
+                <% end %>
+              
+              <% else %>
 
-        <% unless current_user == f %>
-          <div id="follow_form_showfollow">
-            <% if current_user.following?(f) %>
+                <!-- follow form -->
+                <%= form_for(current_user.relationships.build(followed_id: f.id)) do |f| %>
+                  <%= f.hidden_field :followed_id %>
+                  <%= f.submit "Follow", class: "btn btn-large btn-primary" %>
+                <% end %>
 
-              <!-- unfollow form -->
-              <%= form_for(current_user.relationships.find_by(followed_id: f.id), html: { method: :delete }) do |f| %>
-                <%= f.submit "Unfollow", class: "btn btn-large" %>
               <% end %>
-            
-            <% else %>
-
-              <!-- follow form -->
-              <%= form_for(current_user.relationships.build(followed_id: f.id)) do |f| %>
-                <%= f.hidden_field :followed_id %>
-                <%= f.submit "Follow", class: "btn btn-large btn-primary" %>
-              <% end %>
-
-            <% end %>
-          </div>
-        <% end %>
-
-
-          <p><big><%= link_to f.name, user_path(f) %></big> @<%= f.username %><br>
-          <% if f.bio %>
-            <small><%= f.bio %></small></p>
+            </div>
           <% end %>
-          <p>
-            <%= link_to "#{f.followers.count} Followers", followers_user_path(f) %> | 
-            <%= link_to "#{f.followed_users.count} Followers", following_user_path(f) %>
-          </p>
 
-        </div>
-      <% end %>
-      <%= will_paginate @users %>
+
+            <p><big><%= link_to f.name, user_path(f) %></big> @<%= f.username %><br>
+            <% if f.bio %>
+              <small><%= f.bio %></small></p>
+            <% end %>
+            <p>
+              <%= link_to "#{f.followers.count} Followers", followers_user_path(f) %> | 
+              <%= link_to "#{f.followed_users.count} Followers", following_user_path(f) %>
+            </p>
+          </div>
+          <% end %>
+        <% else %>
+          <p>No Friends Yet</p>
+        <% end %>
+        <%= will_paginate @users %>
   </div>
 </div>

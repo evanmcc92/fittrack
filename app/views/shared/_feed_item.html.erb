@@ -16,7 +16,7 @@
 
 	  	<% if current_user.id == feed_item.user_id %>
 	  		<div class="panel-footer">
-				<%= link_to "", post_path(feed_item), :method => :delete, class: "glyphicon glyphicon-trash" %>
+				<%= link_to "", post_path(feed_item.model_id), :method => :delete, class: "glyphicon glyphicon-trash" %>
 				
 	  		</div>
 		<% end %>
@@ -27,16 +27,15 @@
 	<div class="panel panel-default" id="workout-<%= feed_item.model_id %>" >
 		<div class="panel-heading">
 			<%= link_to feed_item.user.username, feed_item.user %> | Posted <%= time_ago_in_words(feed_item.created_at) %> ago | <%= feed_item.like_count %> Favorites
-				<% if current_user.likes? feed_item %>
-			    	<%= unlike_link_for feed_item  %>
-			    <% else %>
-			    	<%= like_link_for feed_item %>
-			    <% end %>
+			<% if current_user.likes? feed_item %>
+		    	<%= unlike_link_for feed_item  %>
+		    <% else %>
+		    	<%= like_link_for feed_item %>
+		    <% end %>
 		</div>
 
 		<div class="panel-body">
 				<p>Date Completed: <%= feed_item.created_at.strftime '%m/%d/%Y' %></p>
-
 				<% @workout.wo_sets.each do |wo_set| %>
 					<table class="table table-bordered table-condensed">
 						<% if wo_set.rep != "" %>

@@ -7,8 +7,10 @@
 	<div class="col-md-8">
 		<h1>All My Workouts</h1>
 
-		<% if @feed_items.any? %>
+		<% if @feed_items.where(:model_name => "workout").any? %>
 		    <%= render partial: 'shared/feed_item', collection: @feed_items.where(:model_name => "workout") %>
+		<% else %>
+			<p><%= link_to "You can create a new workout here", new_workout_path %></p>
 		<% end %>
 		<%= will_paginate @feed_items %>
 	</div>
