@@ -11,8 +11,7 @@ require 'csv'
 	def self.import(file, user_id)
     CSV.foreach(file.path, headers: true) do |row|
 
-      product_hash = row.to_hash # exclude the price field
-      exercise = Exercise.find_by(id: product_hash["id"])
+      exercise = Exercise.find_by(id: row[0])
 
       if exercise.nil?
         Exercise.create!(
@@ -28,7 +27,7 @@ require 'csv'
           :description => row[2],
           :category => row[3]
         )
-      end # end if !product.nil?
+      end
     end
  	end
 
