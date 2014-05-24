@@ -36,4 +36,3 @@ gem 'rails4-autocomplete'
 gem "jquery-ui-rails"
 gem 'likeable'
 gem 'redis'
-gem 'resque'
