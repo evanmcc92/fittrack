@@ -168,6 +168,7 @@ DEPENDENCIES
   rails (= 4.0.2)
   rails4-autocomplete
   rails_12factor (= 0.0.2)
+  redis
   roo
   sass-rails (= 4.0.1)
   sdoc (= 0.3.20)
