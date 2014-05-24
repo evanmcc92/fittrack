@@ -33,7 +33,6 @@ class WorkoutsController < ApplicationController
 
   def update
     @workout = Workout.find(params[:id])
-    @wo_set = WoSet.find_by(params[:id])
 
     if @workout.update_attributes(workout_params)
       #if task saves
@@ -49,6 +48,7 @@ class WorkoutsController < ApplicationController
   def destroy
     @workout = Workout.find_by(params[:model_id])
     @feed_item = Feed.find(params[:id])
+    WoSet.find_by(:workout_id => @feed_item.model_id).destroy
     @workout.destroy
     @feed_item.destroy
 
