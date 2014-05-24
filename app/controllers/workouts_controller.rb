@@ -17,6 +17,8 @@ class WorkoutsController < ApplicationController
   end
 
   def edit
+    @workout = Workout.find(params[:id])
+    @post = current_user.posts.build
   end
 
   def create
@@ -30,6 +32,18 @@ class WorkoutsController < ApplicationController
   end
 
   def update
+    @workout = Workout.find(params[:id])
+    @wo_set = WoSet.find_by(params[:id])
+
+    if @workout.update_attributes(workout_params)
+      #if task saves
+      flash[:success] = "workout Updated"
+      redirect_to @workout
+    else
+      #if task doesnt save
+      flash[:error] = "workout not Updated"
+      redirect_to root_path
+    end
   end
 
   def destroy
@@ -43,6 +57,6 @@ class WorkoutsController < ApplicationController
 
   private
     def workout_params
-      params.require(:workout).permit(:user_id, wo_sets_attributes:[:exercise_id, :rep, :weight, :time, :distance])
+      params.require(:workout).permit(:user_id, wo_sets_attributes:[:id, :exercise_id, :rep, :weight, :time, :distance])
     end
 end

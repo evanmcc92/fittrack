@@ -1,5 +1,3 @@
-
-
 class Exercise < ActiveRecord::Base
 
 require 'csv'
