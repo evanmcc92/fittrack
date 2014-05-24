@@ -1,3 +1,3 @@
 
-uri = URI.parse(ENV["redis://redistogo:d0362e0f606724cd45cc16a0c1f8a218@angelfish.redistogo.com:10043/"])
-REDIS = Redis.new(:url => ENV['redis://redistogo:d0362e0f606724cd45cc16a0c1f8a218@angelfish.redistogo.com:10043/'])
+uri = URI.parse(ENV["REDISTOGO_URL"])
+REDIS = Redis.new(:url => ENV['REDISTOGO_URL'])
