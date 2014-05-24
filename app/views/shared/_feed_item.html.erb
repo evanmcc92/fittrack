@@ -16,7 +16,7 @@
 
 	  	<% if current_user.id == feed_item.user_id %>
 	  		<div class="panel-footer">
-				<%= link_to "", post_path(feed_item), :method => :delete, class: "glyphicon glyphicon-trash" %>
+				<%= link_to "Delete", post_path(feed_item), :method => :delete, class: "glyphicon glyphicon-trash" %>
 				
 	  		</div>
 		<% end %>
