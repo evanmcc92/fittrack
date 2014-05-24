@@ -16,7 +16,7 @@
 
 	  	<% if current_user.id == feed_item.user_id %>
 	  		<div class="panel-footer">
-				<%= link_to "", post_path(feed_item.model_id), :method => :delete, class: "glyphicon glyphicon-trash" %>
+				<%= link_to "", post_path(feed_item), :method => :delete, class: "glyphicon glyphicon-trash" %>
 				
 	  		</div>
 		<% end %>
@@ -69,8 +69,8 @@
 			</div>
 		  	<% if current_user.id == feed_item.user_id %>
 			  	<div class="panel-footer">
-					<%= link_to "", workout_path(feed_item && feed_item.model_id), :method => :delete, class: "glyphicon glyphicon-trash" %>
-					<%= link_to "", edit_workout_path(feed_item && feed_item.model_id), class: "glyphicon glyphicon-edit" %>
+					<%= link_to "Delete", workout_path(feed_item && feed_item.model_id), :method => :delete, class: "glyphicon glyphicon-trash" %> | 
+					<%= link_to "Edit", edit_workout_path(feed_item && feed_item.model_id), class: "glyphicon glyphicon-edit" %>
 			  	</div>
 			<% end %>
 		</div>

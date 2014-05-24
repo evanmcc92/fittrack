@@ -38,8 +38,8 @@
 	</div>
   	<% if current_user == workout.user %>
 	  	<div class="panel-footer">
-			<%= link_to "", workout_path(workout), :method => :delete, class: "glyphicon glyphicon-trash" %>
-			<%= link_to "", edit_workout_path(workout), class: "glyphicon glyphicon-edit" %>
+			<%= link_to "Delete", workout_path(workout), :method => :delete, class: "glyphicon glyphicon-trash" %> | 
+			<%= link_to "Edit", edit_workout_path(workout), class: "glyphicon glyphicon-edit" %>
 	  	</div>
 	<% end %>
 </div>
