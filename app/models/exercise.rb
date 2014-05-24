@@ -6,6 +6,9 @@ require 'csv'
 	belongs_to :user
 	belongs_to :goal
 	belongs_to :wo_set
+
+  #pagination
+  self.per_page = 25
 	
 
 	def self.import(file, user_id)

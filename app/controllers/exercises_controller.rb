@@ -45,7 +45,7 @@ class ExercisesController < ApplicationController
 
   helper_method :sortcolumn, :sortdirection
   def index
-  	@exercises = Exercise.order(sortcolumn + " " + sortdirection)
+  	@exercises = Exercise.order(sortcolumn + " " + sortdirection).paginate(:page => params[:page])
     @post = current_user.posts.build
   end
 
