@@ -8,7 +8,7 @@
 	<%= f.text_area :description, class: "form-control" %></p>
 
 	<p><%= f.label :category %><br>
-	<%= f.select(:category, [["Lifting"], ["Cardio"]], {prompt: "Select a Category"}, {class: "form-control"} )  %></p>
+	<%= f.select(:category, [["Abdominals"], ["Abductors"], ["Adductors"], ["Biceps"], ["Calves"], ["Chest"], ["Forearms"], ["Glutes"], ["Hamstrings"], ["Lats"], ["Lower Back"], ["Middle Back"], ["Neck"], ["Quadriceps"], ["Shoulder"], ["Traps"], ["Triceps"]], {prompt: "Select a Category"}, {class: "form-control"} )  %></p>
 	<%= f.submit "Publish Exercise", class: "btn btn-primary" %>
 <% end %>
 <% else %>
