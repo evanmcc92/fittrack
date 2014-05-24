@@ -30,5 +30,5 @@ Fittrack::Application.configure do
   #devise
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
-  ENV["REDISTOGO_URL"] = 'redis://redistogo:d0362e0f606724cd45cc16a0c1f8a218@angelfish.redistogo.com:10043/'
+  ENV["REDISTOGO_URL"] = 'redis://redistogo:d0362e0f606724cd45cc16a0c1f8a218@angelfish.redistogo.com:6389/'
 end
