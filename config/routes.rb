@@ -23,7 +23,7 @@ Fittrack::Application.routes.draw do
   resources :posts, only: [:create, :destroy]
 
 
-  #for likeable gem
+  #for act_as_votable gem
   delete  'likes/:resource_name/:resource_id' => "likes#destroy", :as => 'unlike'
   post    'likes/:resource_name/:resource_id' => "likes#create",  :as => 'like'
   
