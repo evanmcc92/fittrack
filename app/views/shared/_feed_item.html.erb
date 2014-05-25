@@ -2,7 +2,7 @@
 
 	<div class="panel panel-default" id="post-<%= feed_item.model_id %>" >
 		<div class="panel-heading">
-			<%= link_to feed_item.user.username, feed_item.user %> | Posted <%= time_ago_in_words(feed_item.created_at) %> ago | <%= feed_item.get_likes.size %> Favorites
+			@<%= link_to feed_item.user.username, feed_item.user %> | Posted <%= time_ago_in_words(feed_item.created_at) %> ago | <%= feed_item.get_likes.size %> Favorites
 			<% if current_user.liked? feed_item %>
 		    	<%= unlike_link_for feed_item  %>
 		    <% else %>
@@ -26,7 +26,7 @@
 
 	<div class="panel panel-default" id="workout-<%= feed_item.model_id %>" >
 		<div class="panel-heading">
-			<%= link_to feed_item.user.username, feed_item.user %> | Posted <%= time_ago_in_words(feed_item.created_at) %> ago | <%= feed_item.get_likes.size %> Favorites
+			@<%= link_to feed_item.user.username, feed_item.user %> | Posted <%= time_ago_in_words(feed_item.created_at) %> ago | <%= feed_item.get_likes.size %> Favorites
 			<% if current_user.liked? feed_item %>
 		    	<%= unlike_link_for feed_item  %>
 		    <% else %>

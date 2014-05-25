@@ -1,5 +1,5 @@
 <div id="user-info" class="user-show">
-	<h3><%= @user.username %></h3>
+	<h3>@<%= @user.username %></h3>
 	<p><strong><%= @user.name%></strong></p>
     <p><%= render 'shared/stats' %></p>
     <p><%= render 'follow_form' if signed_in? %></p>
