@@ -35,4 +35,4 @@ gem 'will_paginate', '~> 3.0.5'
 gem 'rails4-autocomplete'
 gem "jquery-ui-rails"
 gem 'likeable'
-gem 'redis-rails', '~> 4.0.0'
+gem 'redis'
