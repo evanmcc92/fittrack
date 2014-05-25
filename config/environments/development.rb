@@ -4,7 +4,6 @@ Fittrack::Application.configure do
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
-  ENV["REDISTOGO_URL"] = 'redis://redistogo:d0362e0f606724cd45cc16a0c1f8a218@angelfish.redistogo.com:10043/'
   
   config.cache_classes = false
 
