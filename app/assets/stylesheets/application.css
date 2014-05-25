@@ -32,6 +32,10 @@
   margin-bottom: 10px;
 }
 
+#post-id {
+  line-height: 50px;
+}
+
 @media (max-width: 992px) {
   .user-show {
     display: none;
