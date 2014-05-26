@@ -1,4 +1,5 @@
 class WorkoutsController < ApplicationController
+
   def index
     @feed_items = current_user.recent_feeds.paginate(:page => params[:page])
     @post = current_user.posts.build
@@ -55,8 +56,33 @@ class WorkoutsController < ApplicationController
     redirect_to workouts_path
   end
 
+  def progress
+    @post = current_user.posts.build #need on all pages
+    #used for ajax search
+    
+    if params[:search]
+      @exercises = Exercise.search(params[:search]).paginate(:page => params[:page])
+    else
+      @exercises = Exercise.all.paginate(:page => params[:page])
+    end
+
+
+    @feed_items = current_user.recent_feeds.paginate(:page => params[:page])
+    @workout = Workout.find_by(params[:model_id])
+  end
+
   private
     def workout_params
       params.require(:workout).permit(:user_id, wo_sets_attributes:[:id, :exercise_id, :rep, :weight, :time, :distance])
+    end
+
+    #to sort exercise table on progress page
+    helper_method :sortcolumn, :sortdirection
+    def sortcolumn
+      Exercise.column_names.include?(params[:sort]) ? params[:sort] : "name"
+    end
+
+    def sortdirection
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 end

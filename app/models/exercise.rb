@@ -7,6 +7,14 @@ require 'csv'
 
   #pagination
   self.per_page = 25
+
+  def self.search(query)
+    if query
+      where("name like ? ", "%#{query}%")
+    else
+      scoped
+    end
+  end
 	
 
 	def self.import(file, user_id)
