@@ -1,0 +1,16 @@
+<table class="table table-hover table-bordered">
+	<col span="1" style="width: 15%;">
+	<col span="2" style="width: 75%;">
+	<tr>
+		<th><%= sortable "name" %></th>
+		<th><%= sortable "description" %></th>
+		<th><%= sortable "category" %></th>
+	</tr>
+	<% WoSet.find(:all, :conditions => {:workout_id => @workout}).each do |wo_set| %>
+		<tr>
+			<td><%= Exercise.find(wo_set.exercise_id).name %></td>
+			<td><%= Exercise.find(wo_set.exercise_id).description %></td>
+			<td><%= Exercise.find(wo_set.exercise_id).category %></td>
+		</tr>
+	<% end %>
+</table>

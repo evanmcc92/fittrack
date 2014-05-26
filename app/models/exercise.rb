@@ -8,11 +8,9 @@ require 'csv'
   #pagination
   self.per_page = 25
 
-  def self.search(query)
-    if query
-      where("name like ? ", "%#{query}%")
-    else
-      scoped
+  def self.search(search)
+    if search
+      where("name like ? ", "%#{search}%")
     end
   end
 	

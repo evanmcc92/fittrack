@@ -58,17 +58,18 @@ class WorkoutsController < ApplicationController
 
   def progress
     @post = current_user.posts.build #need on all pages
-    #used for ajax search
-    
-    if params[:search]
-      @exercises = Exercise.search(params[:search]).paginate(:page => params[:page])
-    else
-      @exercises = Exercise.all.paginate(:page => params[:page])
-    end
 
 
     @feed_items = current_user.recent_feeds.paginate(:page => params[:page])
-    @workout = Workout.find_by(params[:model_id])
+    @workout = current_user.workouts.all
+
+    # if @workout
+    #     @woset = WoSet.where("workout_id = ?", @workout)
+    #   @exercises = Exercise.where("id = ?", @woset.exercise_id)
+    # else
+    #   @exercises = Exercise.all
+    # end
+
   end
 
   private
