@@ -2,6 +2,7 @@
 	<h1><%= current_user.name %>'s Progress</h1>
 	<div class="col-md-8">
 		<!-- chart here -->
+		<div id="progress"></div>
 	</div>
 	<div class="col-md-4">
 	<% if @workout %>
@@ -12,3 +13,23 @@
 	</div>
 </div>
 
+
+<script>
+$(function () {
+	$('.btnGetSelectedValue').click( function(){
+		var chkId = '';
+
+		$('.chkNumber:checked').each(function() {
+			chkId += $(this).val() + "<br>";
+		});
+
+		chkId =  chkId.slice(0,-1);
+		$("#progress").html(chkId);
+	});
+
+	$('.chkSelectAll').click( function(){
+		$('.chkNumber').prop('checked', $(this).is(':checked'));
+	});
+
+});
+</script>
