@@ -4,8 +4,9 @@
   <title>Fittrack</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag :defaults %>
+  <%= stylesheet_link_tag    "jquery.mentionsInput", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "autocomplete-rails.js" %>
+  <%= javascript_include_tag "jquery.mentionsInput.js" %>
 
   <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
@@ -30,6 +31,21 @@
   <% if signed_in? %>
     <%= render "goals/goalform" %>
     <%= render "posts/postmodal" %>
+    <%= javascript_tag do %>
+        $('textarea .mention').mentionsInput({
+  onDataRequest:function (mode, query, callback) {
+    var data = [
+    <% userall.each do |user| %>
+      { id:<%= user.id %>, name:<%= user.username %> },
+    <% end %>
+    ];
+
+    data = _.filter(data, function(item) { return item.name.toLowerCase().indexOf(query.toLowerCase()) > -1 });
+
+    callback.call(this, data);
+  }
+});
+   <% end %>
   <% end %>
 
 </div>

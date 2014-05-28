@@ -2,16 +2,3 @@
 	<h4>Post something</h4>
 	<%= render "posts/form" %>
 </div>
-<script>
-function updateCountdown() {
-    // 140 is the max message length
-    var remaining = 140 - jQuery('.message').val().length;
-    jQuery('.countdown').text(remaining);
-}
-
-$(document).ready(function($) {
-    updateCountdown();
-    $('.message').change(updateCountdown);
-    $('.message').keyup(updateCountdown);
-});
-</script>

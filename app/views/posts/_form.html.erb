@@ -1,5 +1,18 @@
 <%= form_for @post do |f| %>
-	<p><%= f.text_area :content, :class => "form-control", :placeholder => "Create a post...." %></p>
+	<p><%= f.text_area :content, :class => "form-control mention message", :placeholder => "Create a post..." %></p>
 	<p>You have <B><SPAN class="countdown">140</SPAN></B> characters remaining.</p>
 	<p><%= f.submit "Post", class: "btn btn-large btn-primary" %></p>
 <% end %>
+<script>
+function updateCountdown() {
+    // 140 is the max message length
+    var remaining = 140 - jQuery('.message').val().length;
+    jQuery('.countdown').text(remaining);
+}
+
+$(document).ready(function($) {
+    updateCountdown();
+    $('.message').change(updateCountdown);
+    $('.message').keyup(updateCountdown);
+});
+</script>
