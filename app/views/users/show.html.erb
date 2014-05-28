@@ -1,12 +1,11 @@
 <div class="row">
 	<div class="col-md-4">
-			<%= render "users/showuserinfo" %>
-
+		<%= render "users/showuserinfo" %>
 		<%= render "posts/post_form" %>
 		<%= render "goals/goalviewshow" %>
 	</div>
 	<div class="col-md-8">
-		<h1><%= @user.username %></h1>
+		<h1>@<%= @user.username %></h1>
 		<% if @user.feed.any? %>
 			<%= render 'shared/feed' %>
 			<%= will_paginate @feed_items %>

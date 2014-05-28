@@ -8,7 +8,7 @@
   <%= devise_error_messages! %>
 
   <p><%= f.label :username %><br>
-  <%= f.text_field :username, :autofocus => true, class: "form-control" %></p>
+  <div class="input-group"><span class="input-group-addon">@</span><%= f.text_field :username, :autofocus => true, class: "form-control" %></div></p>
 
   <p><%= f.label :name %><br />
   <%= f.text_field :name, class: "form-control" %></p>

@@ -37,13 +37,22 @@ class WorkoutsController < ApplicationController
     @wo_set = WoSet.find_by(params[:workout_id])
 
     if @workout.update_attributes(workout_params)
+
+    if @workout.update_attributes(workout_params)
+      #if task saves
+      flash[:success] = "workout Updated"
       redirect_to @workout
+    else
+      #if task doesnt save
+      flash[:error] = "workout not Updated"
+      redirect_to root_path
     end
   end
 
   def destroy
     @workout = Workout.find_by(params[:model_id])
     @feed_item = Feed.find(params[:id])
+    WoSet.find_by(:workout_id => @feed_item.model_id).destroy
     @workout.destroy
     @feed_item.destroy
 
@@ -52,6 +61,6 @@ class WorkoutsController < ApplicationController
 
   private
     def workout_params
-      params.require(:workout).permit(:user_id, wo_sets_attributes:[:exercise_id, :rep, :weight, :time, :distance])
+      params.require(:workout).permit(:user_id, wo_sets_attributes:[:id, :exercise_id, :rep, :weight, :time, :distance])
     end
 end

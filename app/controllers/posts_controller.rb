@@ -10,8 +10,10 @@ class PostsController < ApplicationController
   end
 
   def destroy
-  	@post = Post.find(params[:id])
-  	@post.destroy
+    @feed_item = Feed.find(params[:id])
+  	@post = Post.find_by(params[:model_id])
+    @feed_item.destroy
+    @post.destroy
     redirect_to :back
   end
 

@@ -9,6 +9,7 @@
 
 		<% if @exercises %>
 		<h3><%= link_to "+ Exercise", new_exercise_path %></h3>
+		<h4>Total Exercises: <%= @exercises.count %></h4>
 
 
 <%= form_tag import_exercises_path, multipart: true do %>
@@ -34,6 +35,7 @@
 				</tr>
 				<% end %>
 		</table>
+		<%= will_paginate @exercises %>
 		<% else %>
 			<p>No Exercises</p>
 		<% end %>
