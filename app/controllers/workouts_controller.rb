@@ -17,6 +17,9 @@ class WorkoutsController < ApplicationController
   end
 
   def edit
+    @workout = Workout.find(params[:id])
+    @wo_set = WoSet.find_by(params[:workout_id])
+    @post = current_user.posts.build
   end
 
   def create
@@ -30,6 +33,12 @@ class WorkoutsController < ApplicationController
   end
 
   def update
+    @workout = Workout.find(params[:id])
+    @wo_set = WoSet.find_by(params[:workout_id])
+
+    if @workout.update_attributes(workout_params)
+      redirect_to @workout
+    end
   end
 
   def destroy
