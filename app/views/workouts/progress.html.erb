@@ -3,35 +3,53 @@
 	<div class="col-md-8">
 		<!-- chart here -->
 		<div id="progress">
+			<%= line_chart @wo_sets.where(:workout_id => 18).group(:created_at).group(:weight) %>
+			<div id="wo_sets-all">
+				<% @wo_sets.where(:workout_id => @workout).each do |wo_set| %>
+					<p id="wo_set-<%= wo_set.id %>"><%= Exercise.find(wo_set.exercise_id).name %>: <%= wo_set.rep%></p>
+				<% end %>
+			</div>
+			<div id="select"></div>
 		</div>
 	</div>
 	<div class="col-md-4">
 	<% if @workout %>
-		<%= render 'exercise' %>
+		<p><input type="checkbox" class="chkSelectAll" /> Select All</p>
+		<p><button type="button" class="btnGetSelectedValue btn btn-primary" >Get Selected Value</button></p>
+
+		<div id="products"><%= render 'exercise' %></div>
 	<% else %>
 		<p>You do not have any workouts</p>
 	<% end %>
 	</div>
 </div>
 
-
 <%= javascript_tag do %>
-$(function () {
-	$('.btnGetSelectedValue').click( function(){
-		var chkId = '';
+	$(function () {
+		$('#wo_sets-all').hide();
 
-		$('.chkNumber:checked').each(function() {
-			ID = $(this).val();
-			chkId += ID + "<br>";
+		$('.btnGetSelectedValue').click( function(){
+
+			$('.chkNumber').each(function() {
+				chkId = [];
+
+           		if (this.checked) {
+					chkId.push($(this).val());
+				}
+
+			});
+
+			chkId =  chkId.slice(0,-1);
+
+			for (i=1;i <= chkId.length; i++ ){
+				$("#wo_set-"+chkId[i]+"").toggle();
+				$("#select").html(chkId[i]);
+			}
+
 		});
 
-		chkId =  chkId.slice(0,-1);
-		$("#progress").html(chkId);
+		$('.chkSelectAll').click( function(){
+			$('.chkNumber').prop('checked', $(this).is(':checked'));
+		});
 	});
-
-	$('.chkSelectAll').click( function(){
-		$('.chkNumber').prop('checked', $(this).is(':checked'));
-	});
-
-});
 <% end %>

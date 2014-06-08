@@ -63,12 +63,8 @@ class WorkoutsController < ApplicationController
     @feed_items = current_user.recent_feeds.paginate(:page => params[:page])
     @workout = current_user.workouts.all
 
-    # if @workout
-    #     @woset = WoSet.where("workout_id = ?", @workout)
-    #   @exercises = Exercise.where("id = ?", @woset.exercise_id)
-    # else
-    #   @exercises = Exercise.all
-    # end
+    @exercise = Exercise.all.paginate(:page => params[:page])
+    @wo_sets = WoSet.all.paginate(:page => params[:page])
 
   end
 

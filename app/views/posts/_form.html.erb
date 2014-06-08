@@ -1,5 +1,5 @@
 <%= form_for @post do |f| %>
-	<p><%= f.text_area :content, :class => "form-control message", :placeholder => "Create a post..." %></p>
+	<p><%= f.text_area :content, :class => "form-control message mention", :placeholder => "Create a post..." %></p>
 	<p>You have <B><SPAN class="countdown">140</SPAN></B> characters remaining.</p>
 	<p><%= f.submit "Post", class: "btn btn-large btn-primary" %></p>
 <% end %>

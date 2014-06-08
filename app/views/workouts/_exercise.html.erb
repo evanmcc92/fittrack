@@ -1,21 +1,16 @@
-<p><input type="checkbox" class="chkSelectAll" /> Select All</p>
-<p><button type="button" class="btnGetSelectedValue btn btn-primary">GetSelectedValue</button></p>
-
 <table class="table table-hover table-bordered">
-	<col span="1" style="width: 15%;">
-	<col span="2" style="width: 75%;">
 	<tr>
 		<th>Select</th>
-		<th><%= sortable "name" %></th>
-		<th><%= sortable "description" %></th>
-		<th><%= sortable "category" %></th>
+		<th>Name</th>
+		<th>Times Completed</th>
 	</tr>
-	<% WoSet.find(:all, :conditions => {:workout_id => @workout}).each do |wo_set| %>
+	<% @exercise.each do |exercise| %>
+
 		<tr>
-			<td><%= check_box_tag Exercise.find(wo_set.exercise_id).id, Exercise.find(wo_set.exercise_id).id, false, class: 'chkNumber' %></td>
-			<td><%= Exercise.find(wo_set.exercise_id).name %></td>
-			<td><%= Exercise.find(wo_set.exercise_id).description %></td>
-			<td><%= Exercise.find(wo_set.exercise_id).category %></td>
+			<td><%= check_box_tag exercise.id, exercise.id, false, class: 'chkNumber' %></td>
+			<td><%= exercise.name %></td>
+			<td><%= exercise.description %></td>
 		</tr>
 	<% end %>
 </table>
+<%= will_paginate @exercise %>
