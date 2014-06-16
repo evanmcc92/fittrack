@@ -35,3 +35,6 @@ gem 'will_paginate', '~> 3.0.5'
 gem 'rails4-autocomplete'
 gem "jquery-ui-rails"
 gem 'acts_as_votable', '~> 0.9.0'
+
+#adds dummy information
+gem 'betterlorem', '~> 0.1.2'

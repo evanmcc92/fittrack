@@ -17,7 +17,6 @@
 	  	<% if current_user.id == feed_item.user_id %>
 	  		<div class="panel-footer">
 				<%= link_to "", post_path(feed_item), :method => :delete, class: "glyphicon glyphicon-trash" %>
-				<%= link_to "Delete", post_path(feed_item), :method => :delete, class: "glyphicon glyphicon-trash" %>
 	  		</div>
 		<% end %>
 	</div>
@@ -68,42 +67,7 @@
 				</table>
 			<% end %>
 		</div>
-	  	<% if current_user == feed_item.user_id %>
-		  	<div class="panel-footer">
-				<%= link_to "", workout_path(feed_item), :method => :delete, class: "glyphicon glyphicon-trash" %> | 
-				<%= link_to "", edit_workout_path(feed_item.model_id), class: "glyphicon glyphicon-edit" %>
-			<p>Date Completed: <%= feed_item.created_at.strftime '%m/%d/%Y' %></p>
-			<% @workout.wo_sets.each do |wo_set| %>
-				<table class="table table-bordered table-condensed">
-					<% if wo_set.rep != "" %>
-						<tr>
-							<th colspan="2"><%= Exercise.find(wo_set.exercise_id).name %></th>
-						<tr>
-							<td>Reps</td>
-							<td><%= wo_set.rep %></td>
-						</tr>
-					<% end %>
-					<% if wo_set.weight != "" %>
-						<tr>
-							<td>Weight</td>
-							<td><%= wo_set.weight %></td>
-						</tr>
-					<% end %>
-					<% if wo_set.distance != "" %>
-						<tr>
-							<td>Distance</td>
-							<td><%= wo_set.distance %></td>
-						</tr>
-					<% end %>
-					<% if wo_set.time != "" %>
-						<tr>
-							<td>Time</td>
-							<td><%= wo_set.time %></td>
-						</tr>
-					<% end %>
-				</table>
-			<% end %>
-		</div>
+	  	
 	  	<% if current_user.id == feed_item.user_id %>
 		  	<div class="panel-footer">
 				<%= link_to "Delete", workout_path(feed_item && feed_item.model_id), :method => :delete, class: "glyphicon glyphicon-trash" %> | 
