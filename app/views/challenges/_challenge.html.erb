@@ -7,9 +7,9 @@
 			<p><strong>Notes:</strong> <%= challenge.content %></p>
 			<% challenge.wo_sets.each do |wo_set| %>
 				<table class="table table-bordered table-condensed">
-						<tr>
-							<th colspan="2"><%= Exercise.find_by(wo_set.exercise_id).name %></th>
-						</tr>
+					<tr>
+						<th colspan="2"><%= Exercise.find(wo_set.exercise_id).name %></th>
+					</tr>
 					<% if wo_set.rep != "" %>
 						<tr>
 							<td>Reps</td>
