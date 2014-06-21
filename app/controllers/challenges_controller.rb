@@ -27,11 +27,26 @@ class ChallengesController < ApplicationController
   end
 
   def edit
+    @challenge = Challenge.find(params[:id])
+    @wo_set = WoSet.find_by_challenge_id(params[:challenge_id])
     @post = current_user.posts.build
   end
 
   def update
     @post = current_user.posts.build
+    @challenge = Challenge.find(params[:id])
+    @wo_set = WoSet.find_by(params[:challenge_id])
+
+
+    if @challenge.update_attributes(challenge_params)
+      #if task saves
+      flash[:success] = "challenge Updated"
+      redirect_to @challenge
+    else
+      #if task doesnt save
+      flash[:error] = "challenge not Updated"
+      redirect_to root_path
+    end
   end
 
   def destroy

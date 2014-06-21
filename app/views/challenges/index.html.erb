@@ -9,54 +9,10 @@
 		<% if current_user.admin == true %>
 			<p><%= link_to "Create a new challenge here", new_challenge_path %></p>
 		<% end %>
-		<% @challenges.each do |feed_item| %>
-			<p><div class="panel panel-default" id="challenge-<%= feed_item.id %>" >
-		<div class="panel-heading">
-			Posted by @<%= link_to feed_item.user.username, feed_item.user %> | Posted <%= time_ago_in_words(feed_item.created_at) %> ago
-		</div>
-
-		<div class="panel-body">
-			<p><strong>Notes:</strong> <%= feed_item.content %></p>
-			<% feed_item.wo_sets.each do |wo_set| %>
-				<table class="table table-bordered table-condensed">
-						<tr>
-							<th colspan="2"><%= Exercise.find_by(wo_set.exercise_id).name %></th>
-						</tr>
-					<% if wo_set.rep != "" %>
-						<tr>
-							<td>Reps</td>
-							<td><%= wo_set.rep %></td>
-						</tr>
-					<% end %>
-					<% if wo_set.weight != "" %>
-						<tr>
-							<td>Weight</td>
-							<td><%= wo_set.weight %></td>
-						</tr>
-					<% end %>
-					<% if wo_set.distance != "" %>
-						<tr>
-							<td>Distance</td>
-							<td><%= wo_set.distance %></td>
-						</tr>
-					<% end %>
-					<% if wo_set.time != "" %>
-						<tr>
-							<td>Time</td>
-							<td><%= wo_set.time %></td>
-						</tr>
-					<% end %>
-				</table>
-			<% end %>
-		</div>
-	  	
-	  	<% if current_user.id == feed_item.user_id %>
-		  	<div class="panel-footer">
-				<%= link_to "Delete", challenge_path(feed_item), :method => :delete, class: "glyphicon glyphicon-trash" %> | 
-				<%= link_to "Edit", edit_challenge_path(feed_item), class: "glyphicon glyphicon-edit" %>
-		  	</div>
+		<% if @challenges.any? %>
+    		<%= render partial: 'challenge', collection: @challenges %>
+		<% else %>
+			<p>No Challenges Yet</p>
 		<% end %>
-	</div></p>
-		<% end -%>
 	</div>
 </div>
