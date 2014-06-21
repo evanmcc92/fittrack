@@ -14,10 +14,10 @@
   <%= f.text_field :name, class: "form-control" %></p>
 
   <p><%= f.label :gender %><br />
-  <%= f.select(:gender, [["Male"], ["Female"]], {},{class: "form-control"}) %></p>
+  <%= f.select(:gender, [["Male"], ["Female"]], {prompt: "Select a Gender"},{class: "form-control"}) %></p>
 
   <p><%= f.label :measurement_system %><br />
-  <%= f.select(:measurement_system, [["US"], ["Metric"]],{}, {class: "form-control"}) %></p>
+  <%= f.select(:measurement_system, [["US"], ["Metric"]],  {prompt: "Select US or Metric"}, {class: "form-control"}) %></p>
 
   <p><%= f.label :email %><br />
   <%= f.email_field :email, class: "form-control" %></p>

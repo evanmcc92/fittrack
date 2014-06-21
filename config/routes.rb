@@ -1,11 +1,6 @@
 Fittrack::Application.routes.draw do
   
-  
-  get "challenges/new"
-  get "challenges/create"
-  get "challenges/edit"
-  get "challenges/update"
-  get "challenges/destroy"
+
   root "static_page#index"
 
   resources :workouts
@@ -25,6 +20,7 @@ Fittrack::Application.routes.draw do
   
   resources :relationships, only: [:create, :destroy]
   resources :goals
+  resources :challenges
   resources :posts, only: [:create, :destroy]
 
 
