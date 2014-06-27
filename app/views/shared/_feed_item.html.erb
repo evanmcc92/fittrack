@@ -23,7 +23,7 @@
 
 <% else %>
 
-	<div class="panel panel-default" id="workout-<%= feed_item.model_id %>" >
+	<div class="panel panel-default panel-success" id="workout-<%= feed_item.model_id %>" >
 		<div class="panel-heading">
 			@<%= link_to feed_item.user.username, feed_item.user %> | Posted <%= time_ago_in_words(feed_item.created_at) %> ago | <%= feed_item.get_likes.size %> Favorites
 			<% if current_user.liked? feed_item %>
@@ -35,8 +35,7 @@
 
 		<div class="panel-body">
 			<p>Date Completed: <%= feed_item.created_at.strftime '%m/%d/%Y' %></p>
-			<p>ID: <%= feed_item.model_id %></p>
-			<% @workout.wo_sets.each do |wo_set| %>
+			<% WoSet.where(:workout_id => feed_item.model_id).each do |wo_set| %>
 				<table class="table table-bordered table-condensed">
 					<% if wo_set.rep != "" %>
 						<tr>
