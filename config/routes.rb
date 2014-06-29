@@ -25,6 +25,8 @@ Fittrack::Application.routes.draw do
   resources :challenges
   resources :posts, only: [:create, :destroy]
 
+  post "/challenges/:id/challenge_dup" => "challenges#create_duplicate", :as => "challenge_dup"
+
 
   #for act_as_votable gem
   delete  'likes/:resource_name/:resource_id' => "likes#destroy", :as => 'unlike'

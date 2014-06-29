@@ -16,6 +16,27 @@ class ChallengesController < ApplicationController
     end
   end
 
+  def create_duplicate
+
+    @challenge = Challenge.find(params[:id])
+    @workout = current_user.workouts.new
+
+    if @workout.save
+
+      WoSet.where(:challenge_id => @challenge).each do |challenge_woset|
+        @workout_woset = challenge_woset.dup
+        @workout_woset.workout_id = @workout.id
+        @workout_woset.challenge_id = nil
+        @workout_woset.save
+      end
+    
+      redirect_to root_path
+    else
+      redirect_to :back
+    end
+    @post = current_user.posts.build
+  end
+
   def index
     @post = current_user.posts.build
     @challenges = Challenge.all
@@ -51,7 +72,9 @@ class ChallengesController < ApplicationController
 
   def destroy
     @challenge = Challenge.find(params[:id])
-    WoSet.find_by(:challenge_id => @challenge.id).destroy
+    WoSet.where(:challenge_id => @challenge.id).each do |i|
+      i.destroy
+    end
     @challenge.destroy
     redirect_to challenges_path
   end

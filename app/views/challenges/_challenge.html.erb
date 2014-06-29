@@ -1,11 +1,10 @@
 <p><div class="panel panel-default panel-danger" id="challenge-<%= challenge.id %>" >
 		<div class="panel-heading">
-			@<%= link_to challenge.user.username, challenge.user %> | Posted <%= time_ago_in_words(challenge.created_at) %> ago
+			<%= link_to "@#{challenge.user.username}", challenge.user %> | Posted <%= time_ago_in_words(challenge.created_at) %> ago | <%= link_to "Do This", challenge_dup_path(challenge), :method => :post, class: "glyphicon glyphicon-check" %>
 		</div>
 
 		<div class="panel-body">
 			<p><strong>Notes:</strong> <%= challenge.content %></p>
-			<p><%= link_to "Duplicate", "#" %></p>
 			<% challenge.wo_sets.each do |wo_set| %>
 				<table class="table table-bordered table-condensed">
 					<tr>
