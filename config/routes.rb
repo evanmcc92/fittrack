@@ -1,6 +1,7 @@
 Fittrack::Application.routes.draw do
   
-  
+
+  get "wo_sets/destroy"
   root "static_page#index"
 
   resources :workouts
@@ -20,7 +21,11 @@ Fittrack::Application.routes.draw do
   
   resources :relationships, only: [:create, :destroy]
   resources :goals
+  resources :wo_sets
+  resources :challenges
   resources :posts, only: [:create, :destroy]
+
+  post "/challenges/:id/challenge_dup" => "challenges#create_duplicate", :as => "challenge_dup"
 
 
   #for act_as_votable gem

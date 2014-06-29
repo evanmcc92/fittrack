@@ -1,0 +1,53 @@
+<%= nested_form_for @challenge do |f| %>
+	<p><%= f.label "Notes" %>: <%= f.text_area :content, class: "form-control" %></p>
+			<div id="sets">
+
+		  		<div class="set">
+					<%= f.fields_for :wo_sets do |w| %>
+						<table class="table">
+							<tr>
+								<td><%= w.label :exercise %></td>
+								<td><%= w.collection_select :exercise_id, Exercise.all, :id, :name, {prompt: "Select an Exercise"}, {class: "form-control"}  %></td>
+							</tr>
+							<tr>
+								<td><%= w.label :rep %></td>
+								<td><%= w.select :rep, ((0..500).map {|i| [i,i] }),  {prompt: "How Many Reps"},class: "form-control" %></td>
+							</tr>
+							<tr>
+								<td><%= w.label :weight %></td>
+								<td><div class="input-group"><%= w.text_field :weight, class: "form-control" %>
+  								<% if current_user.measurement_system == "US" %>
+  									<span class="input-group-addon">lbs</span>
+  								<% else %>
+  									<span class="input-group-addon">kgs</span>
+  								<% end %></div></td>
+							</tr>
+							<tr>
+								<td><%= w.label :distance %></td>
+								<td><div class="input-group">
+									<%= w.text_field :distance, class: "form-control" %>
+									<% if current_user.measurement_system == "US" %>
+										<span class="input-group-addon">miles</span>
+									<% else %>
+										<span class="input-group-addon">kms</span>
+									<% end %>
+								</div></td>
+							</tr>
+							<tr>
+								<td><%= w.label :time %></td>
+								<td><%= w.text_field :time, class: "form-control", placeholder: "00:00:00" %></td>
+							</tr>
+						</table>
+  						<p><%= w.link_to_remove "Remove This Set" %></p>
+  						<p><%= link_to "Delete", wo_set_path(:id), :method => :delete, class: "glyphicon glyphicon-trash" %></p>
+
+					<% end %>
+				</div>
+
+			</div>
+
+			<p><%= f.link_to_add "Add a Set", :wo_sets %></p>
+
+			<p><%= f.submit "Publish Challenge", class: "btn btn-primary" %></p>
+
+		<% end %>

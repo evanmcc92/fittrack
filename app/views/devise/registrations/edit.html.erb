@@ -29,18 +29,24 @@
   <%= f.select(:measurement_system, [["US"], ["Metric"]],{}, {class: "form-control"}) %></p>
 
   <p><%= f.label :height %><br />
+  <div class="input-group">
   <% if current_user.measurement_system == "US" %>
-    <%= f.select :height, ((0..500).map {|i| [i,i] }),  {prompt: "Whats Your Height?"},class: "form-control" %>
+    <%= f.select :height, ((36..100).map {|i| [i,i] }),  {prompt: "Whats Your Height in Inches?"},class: "form-control" %>
+    <span class="input-group-addon">inches</span>
   <% else %>
-    <%= f.select :height, ((0..500).map {|i| [i,i] }),  {prompt: "Whats Your Height?"},class: "form-control" %>
+    <%= f.select :height, ((90..250).map {|i| [i,i] }),  {prompt: "Whats Your Height in Centimeters?"},class: "form-control" %>
+    <span class="input-group-addon">cm</span>
   <% end %>
+  </div>
 </p>
 
   <p><%= f.label :weight %><br>
-  <div class="input-group"><%= f.text_field :weight, class: "form-control" %>
+  <div class="input-group">
   <% if current_user.measurement_system == "US" %>
+    <%= f.select :weight, ((90..500).map {|i| [i,i] }),  {prompt: "Whats Your Height in Inches?"},class: "form-control" %>
     <span class="input-group-addon">lbs</span>
   <% else %>
+    <%= f.select :weight, ((40..230).map {|i| [i,i] }),  {prompt: "Whats Your Height in Inches?"},class: "form-control" %>
     <span class="input-group-addon">kgs</span>
   <% end %></div></p>
 

@@ -18,6 +18,7 @@ class WorkoutsController < ApplicationController
 
   def edit
     @workout = Workout.find(params[:id])
+    @wo_set = WoSet.find_by(params[:workout_id])
     @post = current_user.posts.build
   end
 
@@ -33,26 +34,30 @@ class WorkoutsController < ApplicationController
 
   def update
     @workout = Workout.find(params[:id])
+    @wo_set = WoSet.find_by(params[:workout_id])
+
 
     if @workout.update_attributes(workout_params)
-      #if task saves
+      #if workout saves
       flash[:success] = "workout Updated"
       redirect_to @workout
     else
-      #if task doesnt save
+      #if workout doesnt save
       flash[:error] = "workout not Updated"
       redirect_to root_path
     end
   end
 
   def destroy
-    @workout = Workout.find_by(params[:model_id])
     @feed_item = Feed.find(params[:id])
-    WoSet.find_by(:workout_id => @feed_item.model_id).destroy
+    @workout = Workout.find_by(@feed_item.model_id)
+    WoSet.where(:workout_id => @feed_item.model_id).each do |i|
+      i.destroy
+    end
     @workout.destroy
     @feed_item.destroy
 
-    redirect_to workouts_path
+    redirect_to :back
   end
 
   private
