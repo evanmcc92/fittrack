@@ -8,14 +8,16 @@
 		<h1>Exercises</h1>
 
 		<% if @exercises %>
-		<h3><%= link_to "+ Exercise", new_exercise_path %></h3>
 		<h4>Total Exercises: <%= @exercises.count %></h4>
+		<h5>Click an exercise's name to see your progress</h5>
 
-
+<% if current_user.admin == true %>
+		<h3><%= link_to "+ Exercise", new_exercise_path %></h3>
 <%= form_tag import_exercises_path, multipart: true do %>
   	<p><%= file_field_tag :file %></p>
   	<p><%= submit_tag "Import", class: "btn btn-primary" %></p>
 <% end %>
+<%end%>
 
 		<table class="table table-hover table-bordered">
 		<col span="1" style="width: 15%;">
@@ -28,7 +30,7 @@
 			</tr>
 				<% @exercises.each do |exercise| %>
 				<tr>
-					<td><%= exercise.name %></td>
+					<td><%= link_to exercise.name, exercise_path(exercise) %></td>
 					<td><%= exercise.description %></td>
 					<td><%= exercise.category %></td>
 					<td><% if current_user.admin %><%= link_to "Delete", exercise_path(exercise), :method => :delete, class: "glyphicon glyphicon-trash" %>&nbsp;<%= link_to 'Edit', edit_exercise_path(exercise), class: "glyphicon glyphicon-edit" %><% else %>No Options<%end%></td>

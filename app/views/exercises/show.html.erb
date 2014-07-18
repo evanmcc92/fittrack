@@ -1,0 +1,58 @@
+<div class="row">
+	<div class="col-md-4">
+		<%= render "users/userinfo" %>
+		<%= render "posts/post_form" %>
+		<%= render "goals/goalviewindex" %>
+	</div>
+	<div class="col-md-8">
+		<h1><%= @exercise.name %></h1>
+
+		<h2>Description: <%= @exercise.description %></h2>
+		<h3>My Progress:</h3>
+		<% if @wo_sets.any? %>
+		
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <%= javascript_tag do %>
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Rep'],
+          <% @wo_sets.each do |w| %>
+            ["<%= w.updated_at.strftime '%m/%d/%Y' %>", <%= w.rep %>],
+          <% end %>
+        ]);
+        
+        var options = {
+            curveType: 'function',
+            legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    <% end %>
+    
+    <div id="chart_div" style="width: 100%; height: 500px;"></div>
+		    <% @wo_sets.each do |wo_set| %>
+		        <blockquote>
+		        <p>Date Completed: <%= wo_set.updated_at.strftime '%m/%d/%Y' %></p>
+				<% if wo_set.rep != "" %>
+						<small>Reps: <%= wo_set.rep %></small>
+				<% end %>
+				<% if wo_set.weight != "" %>
+						<small>Weight: <%= wo_set.weight %></small>
+				<% end %>
+				<% if wo_set.distance != "" %>
+						<small>Distance: <%= wo_set.distance %></small>
+				<% end %>
+				<% if wo_set.time != "" %>
+						<small>Time: <%= wo_set.time %></small>
+				<% end %>
+		        </blockquote>
+		    <% end %>
+		<% else %>
+		    <p>You have not done this workout yet</p>
+		<% end %>
+	</div>
+</div>

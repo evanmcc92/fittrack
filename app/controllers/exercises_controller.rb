@@ -42,6 +42,13 @@ class ExercisesController < ApplicationController
       redirect_to root_path
     end
   end
+  
+  
+  def show
+    @exercise = Exercise.find(params[:id])
+    @wo_sets = WoSet.find(:all, :conditions => {:exercise_id => @exercise.id})
+    @post = current_user.posts.build
+  end
 
   helper_method :sortcolumn, :sortdirection
   def index

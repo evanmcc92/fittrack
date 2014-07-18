@@ -36,7 +36,6 @@ class WorkoutsController < ApplicationController
     @workout = Workout.find(params[:id])
     @wo_set = WoSet.find_by(params[:workout_id])
 
-    if @workout.update_attributes(workout_params)
 
     if @workout.update_attributes(workout_params)
       #if task saves
