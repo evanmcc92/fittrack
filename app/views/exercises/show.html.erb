@@ -1,0 +1,34 @@
+<div class="row">
+	<div class="col-md-4">
+		<%= render "users/userinfo" %>
+		<%= render "posts/post_form" %>
+		<%= render "goals/goalviewindex" %>
+	</div>
+	<div class="col-md-8">
+		<h1><%= @exercise.name %></h1>
+
+		<h2>Description: <%= @exercise.description %></h2>
+		<h3>My Progress:</h3>
+		<% if @wo_sets.any? %>
+		    <% @wo_sets.each do |wo_set| %>
+		        <blockquote>
+		        <p>Date Completed: <%= wo_set.updated_at.strftime '%m/%d/%Y' %></p>
+				<% if wo_set.rep != "" %>
+						<small>Reps: <%= wo_set.rep %></small>
+				<% end %>
+				<% if wo_set.weight != "" %>
+						<small>Weight: <%= wo_set.weight %></small>
+				<% end %>
+				<% if wo_set.distance != "" %>
+						<small>Distance: <%= wo_set.distance %></small>
+				<% end %>
+				<% if wo_set.time != "" %>
+						<small>Time: <%= wo_set.time %></small>
+				<% end %>
+		        </blockquote>
+		    <% end %>
+		<% else %>
+		    <p>You have not done this workout yet</p>
+		<% end %>
+	</div>
+</div>
