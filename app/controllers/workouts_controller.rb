@@ -56,18 +56,6 @@ class WorkoutsController < ApplicationController
     redirect_to workouts_path
   end
 
-  def progress
-    @post = current_user.posts.build #need on all pages
-
-
-    @feed_items = current_user.recent_feeds.paginate(:page => params[:page])
-    @workout = current_user.workouts.all
-
-    @exercise = Exercise.all.paginate(:page => params[:page])
-    @wo_sets = WoSet.all.paginate(:page => params[:page])
-
-  end
-
   private
     def workout_params
       params.require(:workout).permit(:user_id, wo_sets_attributes:[:id, :exercise_id, :rep, :weight, :time, :distance])
