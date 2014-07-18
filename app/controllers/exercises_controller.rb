@@ -12,9 +12,10 @@ class ExercisesController < ApplicationController
 
   def show
     @exercise = Exercise.find(params[:id])
+    @wo_sets = WoSet.find(:all, :conditions => {:exercise_id => @exercise.id})
     @post = current_user.posts.build
   end
-
+  
   def destroy
     @exercise = Exercise.find(params[:id])
 
