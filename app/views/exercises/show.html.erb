@@ -10,6 +10,30 @@
 		<h2>Description: <%= @exercise.description %></h2>
 		<h3>My Progress:</h3>
 		<% if @wo_sets.any? %>
+		
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <%= javascript_tag do %>
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Rep'],
+          <% @wo_sets.each do |w| %>
+            ["<%= w.updated_at.strftime '%m/%d/%Y' %>", <%= w.rep %>],
+          <% end %>
+        ]);
+        
+        var options = {
+            curveType: 'function',
+            legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    <% end %>
+    
+    <div id="chart_div" style="width: 100%; height: 500px;"></div>
 		    <% @wo_sets.each do |wo_set| %>
 		        <blockquote>
 		        <p>Date Completed: <%= wo_set.updated_at.strftime '%m/%d/%Y' %></p>
