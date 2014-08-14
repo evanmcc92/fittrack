@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140525054232) do
+ActiveRecord::Schema.define(version: 20140621045542) do
+
+  create_table "challenges", force: true do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "challenges", ["user_id"], name: "index_challenges_on_user_id"
 
   create_table "exercises", force: true do |t|
     t.string   "name"
@@ -123,8 +132,10 @@ ActiveRecord::Schema.define(version: 20140525054232) do
     t.string   "distance"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "challenge_id"
   end
 
+  add_index "wo_sets", ["challenge_id"], name: "index_wo_sets_on_challenge_id"
   add_index "wo_sets", ["exercise_id"], name: "index_wo_sets_on_exercise_id"
   add_index "wo_sets", ["workout_id"], name: "index_wo_sets_on_workout_id"
 
